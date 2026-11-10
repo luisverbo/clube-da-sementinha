@@ -403,8 +403,8 @@ function semEvento(tipo, detalhe, umaVez = true) {
 }
 semEvento('visita');
 addEventListener('scroll', () => { const f = (scrollY + innerHeight) / document.documentElement.scrollHeight;
-  if (f > .5) semEvento('rolou_meio'); if (f > .95) semEvento('rolou_fim'); }, { passive: true });
-new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { semEvento('viu_planos'); o.disconnect(); } }), { threshold: .35 }).observe(document.getElementById('planos'));
+  if (f > .5) semEvento('rolou_meio'); if (f > .95) semEvento('rolou_fim');
+  if (document.getElementById('planos').getBoundingClientRect().top < innerHeight * .6) semEvento('viu_planos'); }, { passive: true });
 document.querySelectorAll('[data-link]').forEach(a => a.addEventListener('click', () => semEvento('clique_plano', a.closest('.plano').dataset.plano + '-' + periodo, false)));
 // tocar a historinha só quando a pessoa pedir (o vídeo é pesado)
 document.getElementById('tocar').onclick = function () { if (this.querySelector('video')) return; this.innerHTML = '<video src="img/historinha-davi.mp4" controls autoplay playsinline></video>'; try { fbq('trackCustom', 'AssistiuHistorinha') } catch (e) {} semEvento('historinha'); };
