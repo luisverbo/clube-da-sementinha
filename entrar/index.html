@@ -75,6 +75,18 @@ video{width:100%;max-width:360px;border-radius:18px;display:block;margin:12px au
 textarea{width:100%;font:inherit;padding:12px 14px;border:2px solid var(--linha);border-radius:14px;min-height:80px}
 .caixa-check{display:flex;gap:10px;align-items:flex-start;font-weight:700;margin-top:14px}.caixa-check input{width:22px;height:22px;flex:none;margin-top:2px}
 @media(max-width:760px){.numeros{grid-template-columns:1fr 1fr}.assin{grid-template-columns:1fr}.assin .acoes{justify-content:flex-start}}
+.metr h3{font-family:'Baloo 2';font-size:22px;margin:0}
+.metr .cab{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin:26px 0 4px}
+.funil{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:12px}
+.funil .num b{font-size:28px}.funil .num em{font-style:normal;font-weight:900;color:var(--verde);font-size:13px;display:block}
+.tab{width:100%;border-collapse:collapse;background:#fff;border:2px solid var(--linha);border-radius:16px;overflow:hidden;font-size:14.5px;margin-top:10px}
+.tab th,.tab td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--linha);font-weight:700}
+.tab th{background:#F5F2E8;color:var(--suave);font-size:12.5px;text-transform:uppercase;letter-spacing:.02em}
+.tab td:first-child,.tab th:first-child{text-align:left}.tab tr:last-child td{border-bottom:0}
+.barra{height:8px;border-radius:8px;background:var(--grama);margin-top:4px}
+.rolar{overflow-x:auto}
+.dica{font-size:13.5px;color:var(--suave);font-weight:700;margin:8px 2px 0}
+@media(max-width:760px){.funil{grid-template-columns:1fr 1fr}}
 [hidden]{display:none!important}
 </style><script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1667602411436159');fbq('track','PageView');if(/[?&]bemvinda/.test(location.search))fbq('track','Subscribe');</script>
 </head><body>
@@ -159,6 +171,17 @@ textarea{width:100%;font:inherit;padding:12px 14px;border:2px solid var(--linha)
       <div><h2 style="font-size:28px">📊 Painel master</h2><span style="color:var(--suave);font-weight:700" id="p-atual"></span></div>
       <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn pequeno claro" id="p-recarregar" style="margin:0">Atualizar</button><button class="btn pequeno" data-voltar style="margin:0">Ver as aulas</button></div>
     </div>
+    <div class="metr">
+      <div class="cab"><h3>👀 Visitas e cliques da página de vendas</h3><div class="filtros" id="m-per" style="margin:0"></div></div>
+      <div class="funil" id="m-funil"></div>
+      <p class="dica" id="m-dica"></p>
+      <div class="rolar"><table class="tab" id="m-dias"></table></div>
+      <div class="rolar"><table class="tab" id="m-origem"></table></div>
+      <div class="rolar"><table class="tab" id="m-anuncio"></table></div>
+      <div class="rolar"><table class="tab" id="m-planos"></table></div>
+      <div class="aviso" id="m-aviso"></div>
+    </div>
+    <h3 style="font-family:'Baloo 2';font-size:22px;margin:30px 0 0">👥 Assinantes</h3>
     <div class="numeros" id="p-numeros"></div>
     <p style="font-size:13.5px;color:var(--suave);font-weight:700;margin:10px 2px 0" id="p-nota"></p>
     <div class="filtros" id="p-filtros"></div>
@@ -323,7 +346,35 @@ function pintarPainel() {
   };
   lista();
 }
-async function abrirPainel() { tela('painel'); aviso('#p-aviso'); try { painel = await api({ acao: 'admin_painel' }); pintarPainel(); } catch (err) { aviso('#p-aviso', err.message); } }
+// ---- métricas da página de vendas ----
+let mDias = 7;
+const pct = (a, b) => b ? Math.round(a / b * 100) + '%' : '—';
+function pintarMetricas(m) {
+  const t = m.total;
+  $('#m-per').innerHTML = [[1, 'Hoje'], [7, '7 dias'], [14, '14 dias'], [30, '30 dias']].map(([d, r]) => `<button data-d="${d}" class="${d === mDias ? 'on' : ''}">${r}</button>`).join('');
+  $('#m-per').querySelectorAll('button').forEach(b => b.onclick = () => { mDias = +b.dataset.d; carregarMetricas(); });
+  const cx = (rot, v, sub, cls = '') => `<div class="num ${cls}"><small>${rot}</small><b>${v}</b><i>${sub}</i></div>`;
+  $('#m-funil').innerHTML = cx('Pessoas que abriram a página', t.visita, 'visitantes diferentes', 'dest')
+    + cx('Leram até a metade', t.rolou_meio, `<em>${pct(t.rolou_meio, t.visita)} de quem abriu</em>`)
+    + cx('Chegaram nos planos', t.viu_planos, `<em>${pct(t.viu_planos, t.visita)} de quem abriu</em>`)
+    + cx('Clicaram em um plano', t.clique_plano, `<em>${pct(t.clique_plano, t.viu_planos)} de quem viu os planos</em>`)
+    + cx('Assinaram', t.assinaturas, `${R$(t.vendido)} · <em style="display:inline">${pct(t.assinaturas, t.clique_plano)} de quem clicou</em>`, t.assinaturas ? '' : '');
+  $('#m-dica').textContent = `${t.historinha} pessoa(s) tocaram a historinha de amostra e ${t.rolou_fim} leram a página até o fim. Contamos cada pessoa uma vez por etapa, mesmo que ela volte várias vezes.`;
+  const linha = (nome, x, extra = '') => `<tr><td>${nome}</td><td>${x.visita}</td><td>${x.rolou_meio}</td><td>${x.viu_planos}</td><td>${x.clique_plano}</td>${extra}</tr>`;
+  const cab = (primeira, extra = '') => `<tr><th>${primeira}</th><th>Abriram</th><th>Metade</th><th>Planos</th><th>Clicaram</th>${extra}</tr>`;
+  const fmtDia = d => { const [a, mm, dd] = d.split('-'); return `${dd}/${mm}`; };
+  $('#m-dias').innerHTML = cab('Dia', '<th>Assinaram</th>') + m.por_dia.slice().reverse().map(x => linha(fmtDia(x.dia), x, `<td>${x.assinaturas}</td>`)).join('');
+  $('#m-origem').innerHTML = cab('De onde vieram') + (m.por_origem.length ? m.por_origem.map(x => linha(x.nome, x)).join('') : '<tr><td colspan="5">Nenhuma visita ainda neste período.</td></tr>');
+  $('#m-anuncio').hidden = !m.por_anuncio.length;
+  $('#m-anuncio').innerHTML = cab('Qual anúncio') + m.por_anuncio.map(x => linha(x.nome, x)).join('');
+  const NOMES = { uma: 'Uma idade', todas: 'Todas as idades', completo: 'Completo' };
+  const cl = Object.entries(m.cliques_plano).sort((a, b) => b[1] - a[1]), maior = cl[0]?.[1] || 1;
+  $('#m-planos').hidden = !cl.length;
+  $('#m-planos').innerHTML = '<tr><th>Plano clicado</th><th>Cliques</th></tr>' + cl.map(([k, v]) => { const [pl, per] = k.split('-');
+    return `<tr><td>${NOMES[pl] || pl} · ${per || ''}<div class="barra" style="width:${Math.max(6, v / maior * 100)}%"></div></td><td>${v}</td></tr>`; }).join('');
+}
+async function carregarMetricas() { aviso('#m-aviso'); try { pintarMetricas(await api({ acao: 'admin_metricas', dias: mDias })); } catch (err) { aviso('#m-aviso', err.message); } }
+async function abrirPainel() { tela('painel'); aviso('#p-aviso'); carregarMetricas(); try { painel = await api({ acao: 'admin_painel' }); pintarPainel(); } catch (err) { aviso('#p-aviso', err.message); } }
 $('#b-painel').onclick = abrirPainel; $('#p-recarregar').onclick = abrirPainel;
 
 async function abrir() {

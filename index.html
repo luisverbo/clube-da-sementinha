@@ -380,7 +380,33 @@ addEventListener('scroll', () => { const y = scrollY; nav.classList.toggle('rolo
   if (!calmo && y < 900) px.forEach(el => el.style.translate = `0 ${y * el.dataset.px / 100}px`); }, { passive: true });
 // estrelinhas da seção escura
 const ceu = document.querySelector('.estrelas'); for (let i = 0; i < 40; i++) { const s = document.createElement('i'); s.style.cssText = `left:${Math.random() * 100}%;top:${Math.random() * 100}%;animation-delay:${-Math.random() * 3}s;opacity:${.3 + Math.random() * .7}`; ceu.appendChild(s); }
+// ---- métricas próprias (painel master): visita, rolagem, planos, cliques ----
+const SEM_API = 'https://hcadyqktfowfkxsbogmj.supabase.co/functions/v1/sementinha';
+const semGuarda = { get: k => { try { return localStorage.getItem(k) } catch { return null } }, set: (k, v) => { try { localStorage.setItem(k, v) } catch {} } };
+const semVid = semGuarda.get('sem_vid') || (() => { const v = Array.from(crypto.getRandomValues(new Uint8Array(12)), x => x.toString(16).padStart(2, '0')).join(''); semGuarda.set('sem_vid', v); return v; })();
+const semOrigem = (() => {
+  const q = new URLSearchParams(location.search), ref = document.referrer;
+  let origem = q.get('utm_source') || '';
+  if (/^(meta|facebook|fb|instagram|ig)$/i.test(origem) || q.has('fbclid')) origem = 'Anúncio Meta';
+  else if (!origem && ref && !ref.includes(location.hostname)) {
+    const h = new URL(ref).hostname;
+    origem = /instagram/.test(h) ? 'Instagram' : /facebook|fb\./.test(h) ? 'Facebook' : /whatsapp|wa\.me/.test(h) ? 'WhatsApp' : /google/.test(h) ? 'Google' : h;
+  }
+  return { origem: origem || 'Direto (link ou digitado)', campanha: q.get('utm_campaign'), anuncio: q.get('utm_content') };
+})();
+const semAparelho = /Mobi|Android|iPhone/i.test(navigator.userAgent) ? 'Celular' : 'Computador';
+const semFeito = new Set();
+function semEvento(tipo, detalhe, umaVez = true) {
+  if (umaVez && semFeito.has(tipo)) return; semFeito.add(tipo);
+  try { fetch(SEM_API, { method: 'POST', keepalive: true, headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify({ acao: 'evento', tipo, detalhe, visitante: semVid, dispositivo: semAparelho, ...semOrigem }) }).catch(() => {}); } catch (e) {}
+}
+semEvento('visita');
+addEventListener('scroll', () => { const f = (scrollY + innerHeight) / document.documentElement.scrollHeight;
+  if (f > .5) semEvento('rolou_meio'); if (f > .95) semEvento('rolou_fim'); }, { passive: true });
+new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { semEvento('viu_planos'); o.disconnect(); } }), { threshold: .35 }).observe(document.getElementById('planos'));
+document.querySelectorAll('[data-link]').forEach(a => a.addEventListener('click', () => semEvento('clique_plano', a.closest('.plano').dataset.plano + '-' + periodo, false)));
 // tocar a historinha só quando a pessoa pedir (o vídeo é pesado)
-document.getElementById('tocar').onclick = function () { if (this.querySelector('video')) return; this.innerHTML = '<video src="img/historinha-davi.mp4" controls autoplay playsinline></video>'; try { fbq('trackCustom', 'AssistiuHistorinha') } catch (e) {} };
+document.getElementById('tocar').onclick = function () { if (this.querySelector('video')) return; this.innerHTML = '<video src="img/historinha-davi.mp4" controls autoplay playsinline></video>'; try { fbq('trackCustom', 'AssistiuHistorinha') } catch (e) {} semEvento('historinha'); };
 </script>
 </body></html>
