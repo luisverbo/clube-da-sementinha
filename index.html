@@ -80,6 +80,7 @@ section{position:relative;padding:72px 0}
 .cartao:hover{transform:translateY(-6px) rotate(-1deg);box-shadow:0 14px 0 var(--ink)}
 .cartao .ic{width:64px;height:64px;border-radius:20px;display:grid;place-items:center;font-size:34px;margin-bottom:14px;background:var(--c,#FFE38A)}
 .cartao h3{font-size:25px}.cartao p{color:var(--suave);font-weight:700;margin-top:6px;font-size:17px}
+.presente{display:flex;gap:18px;align-items:center;text-align:left;max-width:760px;margin:30px auto 0;background:var(--coral);color:#fff;border:3px solid var(--ink);border-radius:28px;padding:20px 26px;box-shadow:0 8px 0 var(--ink)}.presente .laco{font-size:54px;animation:pulsa 1.8s ease-in-out infinite;flex:none}.presente b{font-family:'Baloo 2';font-size:25px;display:block;line-height:1.1}.presente span{font-weight:700;font-size:16.5px}
 /* idades */
 .idades{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
 .idade{text-align:center}
@@ -168,6 +169,7 @@ footer a{color:#fff}
  .amostra .caixa{text-align:center;padding:26px 20px}.amostra img{margin:0 auto}
  .nav a.txt{display:none}.fixo{display:block}
  .garantia{flex-direction:column;text-align:center}
+ .presente{flex-direction:column;text-align:center}
  .dor .foto{max-width:380px;margin:0 auto}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rev{opacity:1;transform:none}}
@@ -203,8 +205,8 @@ footer a{color:#fff}
 </header>
 
 <div class="faixa" aria-hidden="true"><div>
- <span>4 aulas de domingo por mês</span><i>✦</i><span>3 idades: 3 a 5 · 6 a 8 · 9 a 12 anos</span><i>✦</i><span>historinha em vídeo</span><i>✦</i><span>telão do versículo</span><i>✦</i><span>recado para a família</span><i>✦</i><span>é só imprimir</span><i>✦</i>
- <span>4 aulas de domingo por mês</span><i>✦</i><span>3 idades: 3 a 5 · 6 a 8 · 9 a 12 anos</span><i>✦</i><span>historinha em vídeo</span><i>✦</i><span>telão do versículo</span><i>✦</i><span>recado para a família</span><i>✦</i><span>é só imprimir</span><i>✦</i>
+ <span>4 aulas de domingo por mês</span><i>✦</i><span>3 idades: 3 a 5 · 6 a 8 · 9 a 12 anos</span><i>✦</i><span>historinha em vídeo</span><i>✦</i><span>telão do versículo</span><i>✦</i><span>recado para a família</span><i>✦</i><span>presente surpresa todo mês</span><i>✦</i><span>é só imprimir</span><i>✦</i>
+ <span>4 aulas de domingo por mês</span><i>✦</i><span>3 idades: 3 a 5 · 6 a 8 · 9 a 12 anos</span><i>✦</i><span>historinha em vídeo</span><i>✦</i><span>telão do versículo</span><i>✦</i><span>recado para a família</span><i>✦</i><span>presente surpresa todo mês</span><i>✦</i><span>é só imprimir</span><i>✦</i>
 </div></div>
 
 <!-- DOR -->
@@ -234,6 +236,7 @@ footer a{color:#fff}
   <div class="cartao rev" style="--c:#E6DBF7;--d:.06s"><div class="ic">📺</div><h3>Telão do versículo</h3><p>A tela pronta para projetar ou mostrar na TV da sala.</p></div>
   <div class="cartao rev" style="--c:#FFE38A;--d:.12s"><div class="ic">💌</div><h3>Recado para a família</h3><p>Um bilhete para enviar aos pais, com o versículo e o que perguntar em casa.</p></div>
  </div>
+ <div class="presente rev"><span class="laco">🎁</span><div><b>E todo mês, um presente surpresa</b><span>Além das aulas, deixamos um mimo no seu portal: dedoches, jogos, lembrancinhas ou um kit de data especial. Em novembro são os Dedoches do Davi.</span></div></div>
 </div></section>
 
 <!-- IDADES -->
@@ -300,20 +303,20 @@ footer a{color:#fff}
   <div class="plano rev" data-plano="uma">
    <h3>Uma idade</h3><p class="para">Para a professora de uma turma só.</p>
    <div class="preco"><s>R$</s><b data-v>19</b><u data-c>,90</u></div><p class="por" data-por>por mês, no cartão</p>
-   <ul><li>4 aulas de domingo por mês</li><li>Atividades de <b>1 faixa de idade</b></li><li>Historinha em vídeo</li><li>Telão e recado para a família</li><li class="nao">Aulas do meio da semana</li></ul>
+   <ul><li>4 aulas de domingo por mês</li><li>Atividades de <b>1 faixa de idade</b></li><li>Historinha em vídeo</li><li>Telão e recado para a família</li><li>🎁 Presente surpresa todo mês</li><li class="nao">Aulas do meio da semana</li></ul>
    <a class="btn claro" data-link>Assinar Uma idade</a>
   </div>
   <div class="plano top rev" data-plano="todas" style="--d:.08s">
    <span class="fita">⭐ Recomendado</span>
    <h3>Todas as idades</h3><p class="para">Para a igreja com crianças de 3 a 12 anos.</p>
    <div class="preco"><s>R$</s><b data-v>29</b><u data-c>,90</u></div><p class="por" data-por>por mês, no cartão</p>
-   <ul><li>4 aulas de domingo por mês</li><li>Atividades das <b>3 faixas de idade</b></li><li>Historinha em vídeo</li><li>Telão e recado para a família</li><li class="nao">Aulas do meio da semana</li></ul>
+   <ul><li>4 aulas de domingo por mês</li><li>Atividades das <b>3 faixas de idade</b></li><li>Historinha em vídeo</li><li>Telão e recado para a família</li><li>🎁 Presente surpresa todo mês</li><li class="nao">Aulas do meio da semana</li></ul>
    <a class="btn" data-link>Assinar Todas as idades</a>
   </div>
   <div class="plano rev" data-plano="completo" style="--d:.16s">
    <h3>Completo</h3><p class="para">Para quem tem escolinha no domingo e no meio da semana.</p>
    <div class="preco"><s>R$</s><b data-v>39</b><u data-c>,90</u></div><p class="por" data-por>por mês, no cartão</p>
-   <ul><li>4 aulas de domingo por mês</li><li>Atividades das <b>3 faixas de idade</b></li><li>Historinha em vídeo</li><li>Telão e recado para a família</li><li><b>+ 4 aulas do meio da semana</b>, com histórias diferentes</li></ul>
+   <ul><li>4 aulas de domingo por mês</li><li>Atividades das <b>3 faixas de idade</b></li><li>Historinha em vídeo</li><li>Telão e recado para a família</li><li>🎁 Presente surpresa todo mês</li><li><b>+ 4 aulas do meio da semana</b>, com histórias diferentes</li></ul>
    <a class="btn claro" data-link>Assinar Completo</a>
   </div>
  </div>

@@ -46,7 +46,7 @@ button{font:inherit;cursor:pointer;border:0}
 .aula h3{font-size:23px}
 .aula .tema{color:var(--suave);font-weight:700;margin:2px 0 4px}
 .aula .acoes{display:flex;flex-wrap:wrap;gap:8px}
-.aula.trancada{background:#F5F2E8;border-style:dashed}
+.aula.trancada{background:#F5F2E8;border-style:dashed}.aula.presente{background:#FFF3CC;border-color:var(--sol);box-shadow:0 5px 0 var(--sol)}
 .faixas{display:grid;gap:10px;margin-top:14px}
 .faixas button{background:#fff;border:2px solid var(--ink);border-radius:18px;padding:14px;font-family:'Baloo 2';font-weight:800;font-size:22px;color:var(--ink);box-shadow:0 5px 0 var(--ink)}
 .rodape{text-align:center;color:var(--suave);font-size:14px;font-weight:700;padding:30px 0 40px}
@@ -172,12 +172,12 @@ function desenhar(d) {
     const [ano, mm] = m.split('-'), itens = meses[m], aberto = itens.some(x => x.liberado);
     const sec = document.createElement('div');
     sec.innerHTML = `<div class="mes"><h2>${MESES[mm - 1][0].toUpperCase() + MESES[mm - 1].slice(1)} de ${ano}</h2>${aberto ? '' : '<span class="selo cinza">em breve</span>'}</div>`;
-    [['domingo', 'Aulas de domingo'], ['semana', 'Aulas do meio da semana']].forEach(([tipo, titulo]) => {
+    [['bonus', '🎁 Presente do mês'], ['domingo', 'Aulas de domingo'], ['semana', 'Aulas do meio da semana']].forEach(([tipo, titulo]) => {
       const doTipo = itens.filter(x => x.tipo === tipo); if (!doTipo.length) return;
       sec.insertAdjacentHTML('beforeend', `<div class="grupo">${titulo}</div>`);
       doTipo.forEach(x => {
-        const el = document.createElement('div'); el.className = 'aula' + (x.liberado && x.incluso ? '' : ' trancada');
-        if (!x.liberado) el.innerHTML = `<h3>🔒 Aula ${x.aula}</h3><p class="tema">Libera em ${new Date(x.libera_em + 'T12:00').toLocaleDateString('pt-BR')}</p>`;
+        const el = document.createElement('div'); el.className = 'aula' + (x.liberado && x.incluso ? '' : ' trancada'); if (tipo === 'bonus' && x.liberado) el.classList.add('presente');
+        if (!x.liberado) el.innerHTML = `<h3>🔒 ${tipo === 'bonus' ? 'Presente surpresa' : 'Aula ' + x.aula}</h3><p class="tema">Libera em ${new Date(x.libera_em + 'T12:00').toLocaleDateString('pt-BR')}</p>`;
         else {
           el.innerHTML = `<h3>${x.titulo}</h3><p class="tema">${x.tema || ''}${x.referencia ? ' · ' + x.referencia : ''}</p>`;
           if (!x.incluso) el.insertAdjacentHTML('beforeend', `<p style="margin:6px 0 0;font-weight:700">🔒 As aulas do meio da semana fazem parte do Plano Completo.</p>${PAGINA_PLANOS ? `<a class="btn pequeno claro" href="${PAGINA_PLANOS}">Conhecer o Plano Completo</a>` : ''}`);
