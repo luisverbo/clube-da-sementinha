@@ -41,10 +41,7 @@ section{position:relative;padding:72px 0}
 .heroi{padding:36px 0 0;background:linear-gradient(#BFE6FB,#E8F6FE 55%,var(--paper));overflow:hidden}
 .heroi .grade{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:center}
 .heroi h1{font-size:clamp(42px,7.4vw,84px);margin-top:16px}
-.heroi h1 .risco{position:relative;white-space:nowrap}
-.heroi h1 .risco svg{position:absolute;left:-2%;bottom:-.12em;width:104%;height:.32em;overflow:visible}
-.heroi h1 .risco path{fill:none;stroke:var(--sol);stroke-width:10;stroke-linecap:round;stroke-dasharray:400;stroke-dashoffset:400;animation:risca 1s .7s forwards}
-@keyframes risca{to{stroke-dashoffset:0}}
+.heroi h1 .risco{white-space:nowrap;background:linear-gradient(transparent 66%,var(--sol2) 66% 94%,transparent 94%);border-radius:6px;padding:0 .06em}
 .heroi .sub{margin-left:0;max-width:520px}
 .heroi .cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:26px}
 .heroi .mini{font-weight:800;color:var(--suave);font-size:15px;margin-top:14px}
@@ -132,7 +129,7 @@ section{position:relative;padding:72px 0}
 .preco{font-family:'Baloo 2';font-weight:800;line-height:1;margin:16px 0 4px;display:flex;align-items:flex-start;gap:4px}
 .preco s{font-size:22px;text-decoration:none;margin-top:8px}.preco b{font-size:68px}.preco u{font-size:30px;text-decoration:none;margin-top:8px}
 .plano .por{font-weight:800;color:var(--suave);font-size:15px;min-height:44px}.plano.top .por{color:#CFCBE6}
-.plano ul{list-style:none;padding:0;margin:16px 0 22px;display:grid;gap:9px;font-weight:700;font-size:16.5px;flex:1}
+.plano ul{text-align:left;list-style:none;padding:0;margin:16px 0 22px;display:grid;gap:9px;font-weight:700;font-size:16.5px;flex:1}
 .plano li{display:block;position:relative;padding-left:26px}.plano li::before{content:"✓";font-weight:900;color:var(--verde);position:absolute;left:0}.plano.top li::before{color:var(--sol)}
 .plano li.nao{opacity:.45}.plano li.nao::before{content:"–";color:inherit}
 .plano .btn{width:100%;font-size:20px;padding:13px 16px}.plano.top .btn{background:var(--sol);color:var(--ink);box-shadow:0 7px 0 #C99400}
@@ -186,7 +183,7 @@ footer a{color:#fff}
 <header class="heroi"><div class="wrap grade">
  <div>
   <span class="selo rev">Para professoras do ministério infantil e da EBD</span>
-  <h1 class="rev" style="--d:.08s">Sua aula de domingo <span class="risco"><em>pronta</em><svg viewBox="0 0 300 30" preserveAspectRatio="none"><path d="M5 20 Q80 2 150 16 T295 12"/></svg></span>. Todo mês.</h1>
+  <h1 class="rev" style="--d:.08s">Sua aula de domingo <span class="risco"><em>pronta</em></span>. Todo mês.</h1>
   <p class="sub rev" style="--d:.16s">Roteiro, história para contar, atividades para cada idade e historinha em vídeo. Você só imprime e vive o melhor da aula: as crianças.</p>
   <div class="cta rev" style="--d:.24s"><a class="btn" href="#planos">Quero as aulas prontas <span class="seta">→</span></a><a class="btn claro" href="#dentro">Ver por dentro</a></div>
   <p class="mini rev" style="--d:.3s">A partir de R$ 19,90 por mês · cancele quando quiser</p>
