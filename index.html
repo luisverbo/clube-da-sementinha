@@ -367,7 +367,7 @@ function pintar() {
   document.querySelectorAll('.troca button').forEach(b => b.classList.toggle('on', b.dataset.per === periodo));
 }
 document.querySelectorAll('.troca button').forEach(b => b.onclick = () => { periodo = b.dataset.per; pintar(); });
-document.querySelectorAll('[data-link]').forEach(a => a.addEventListener('click', () => { try { fbq('track', 'InitiateCheckout', { content_name: a.closest('.plano').dataset.plano + '-' + periodo }) } catch (e) {} }));
+document.querySelectorAll('[data-link]').forEach(a => a.addEventListener('click', () => { try { fbq('track', 'Lead'); fbq('track', 'InitiateCheckout', { content_name: a.closest('.plano').dataset.plano + '-' + periodo }) } catch (e) {} }));
 pintar();
 // aparecer ao rolar
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), { threshold: .12, rootMargin: '0px 0px -40px' });
