@@ -52,6 +52,29 @@ button{font:inherit;cursor:pointer;border:0}
 .rodape{text-align:center;color:var(--suave);font-size:14px;font-weight:700;padding:30px 0 40px}
 .conta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:6px}
 video{width:100%;max-width:360px;border-radius:18px;display:block;margin:12px auto 0;background:#000}
+.wrap.larga{max-width:1080px}
+.numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+.num{background:#fff;border:2px solid var(--linha);border-radius:18px;padding:14px 16px;box-shadow:0 5px 0 rgba(45,42,74,.07)}
+.num small{display:block;font-weight:800;color:var(--suave);font-size:13px;line-height:1.2}
+.num b{font-family:'Baloo 2';font-size:30px;line-height:1.1;display:block;margin-top:4px}
+.num i{font-style:normal;font-weight:700;color:var(--suave);font-size:12.5px;display:block;line-height:1.25}
+.num.dest{background:var(--ink);color:#fff;border-color:var(--ink)}.num.dest small,.num.dest i{color:#CFCBE6}
+.num.alerta{background:#FFE9E3;border-color:var(--coral)}
+.filtros{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 12px;align-items:center}
+.filtros button{font:inherit;font-weight:800;font-size:15px;border:2px solid var(--ink);background:#fff;color:var(--ink);border-radius:40px;padding:6px 16px;cursor:pointer}
+.filtros button.on{background:var(--ink);color:#fff}
+.filtros input{flex:1;min-width:180px;padding:9px 14px;font-size:15px}
+.assin{background:#fff;border:2px solid var(--linha);border-radius:18px;padding:14px 16px;margin-bottom:10px;display:grid;grid-template-columns:1.5fr 1fr auto;gap:8px 16px;align-items:center}
+.assin b{font-size:17px}.assin small{display:block;color:var(--suave);font-weight:700;font-size:14px;word-break:break-all}
+.assin .et{display:inline-block;padding:2px 10px;border-radius:30px;font-weight:900;font-size:12px;color:#fff;background:var(--grama);margin-right:4px}
+.assin .et.c{background:#9A95AE}.assin .et.p{background:var(--coral)}.assin .et.s{background:var(--sol);color:var(--ink)}
+.assin .acoes{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+.assin .acoes button,.assin .acoes a{font:inherit;font-weight:800;font-size:13.5px;border:2px solid var(--ink);background:#fff;color:var(--ink);border-radius:30px;padding:5px 12px;cursor:pointer;text-decoration:none}
+.assin .acoes .perigo{border-color:#A2331A;color:#A2331A}
+.assin .motivo{grid-column:1/-1;background:#FFF3CC;border-radius:10px;padding:8px 12px;font-size:14px;font-weight:700}
+textarea{width:100%;font:inherit;padding:12px 14px;border:2px solid var(--linha);border-radius:14px;min-height:80px}
+.caixa-check{display:flex;gap:10px;align-items:flex-start;font-weight:700;margin-top:14px}.caixa-check input{width:22px;height:22px;flex:none;margin-top:2px}
+@media(max-width:760px){.numeros{grid-template-columns:1fr 1fr}.assin{grid-template-columns:1fr}.assin .acoes{justify-content:flex-start}}
 [hidden]{display:none!important}
 </style><script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1667602411436159');fbq('track','PageView');if(/[?&]bemvinda/.test(location.search))fbq('track','Subscribe');</script>
 </head><body>
@@ -98,12 +121,52 @@ video{width:100%;max-width:360px;border-radius:18px;display:block;margin:12px au
       <h2 id="b-ola" style="font-size:26px">Olá!</h2>
       <div class="conta"><span class="selo" id="b-plano"></span><span id="b-status" style="font-weight:700;color:var(--suave)"></span></div>
       <a class="link" id="b-gerenciar" target="_blank" rel="noopener" hidden>Gerenciar assinatura</a>
+      <button class="btn pequeno" id="b-painel" hidden>📊 Abrir o painel master</button>
     </div>
     <div id="b-lista"></div>
     <div class="aviso" id="b-aviso"></div>
   </section>
 
-  <div class="rodape">Clube da Sementinha · material para uso na sua igreja<br>Não compartilhe os arquivos fora da sua igreja. 💛</div>
+  <!-- ajuda (onde fica o cancelamento) -->
+  <section id="tela-ajuda" hidden>
+    <div class="heroi"><h1>Ajuda</h1><p>As dúvidas mais comuns de quem assina.</p></div>
+    <div class="cartao" style="display:grid;gap:14px">
+      <div><b>Como baixo as aulas?</b><br><span style="color:var(--suave);font-weight:700">Na tela das aulas, toque no botão verde de cada aula. O PDF vai para os downloads do seu aparelho.</span></div>
+      <div><b>Esqueci a senha. E agora?</b><br><span style="color:var(--suave);font-weight:700">Saia da conta e toque em “É meu primeiro acesso / esqueci a senha”. Você cria uma nova com o e-mail e o telefone da compra.</span></div>
+      <div><b>Quando saem as aulas novas?</b><br><span style="color:var(--suave);font-weight:700">No dia 1º de cada mês, junto com o presente do mês.</span></div>
+      <div><b>Como cancelar a assinatura?</b><br><span style="color:var(--suave);font-weight:700">Você cancela quando quiser, sem multa. </span><button class="link" style="padding:0" id="ir-cancelar">Abrir a página de cancelamento</button></div>
+    </div>
+    <p style="text-align:center"><button class="link" data-voltar>← Voltar para as aulas</button></p>
+  </section>
+
+  <!-- cancelar -->
+  <section id="tela-cancelar" hidden>
+    <div class="heroi"><h1>Cancelar assinatura</h1><p>Que pena! Antes de ir, conta pra gente o motivo? Isso ajuda a melhorar o Clube.</p></div>
+    <form class="cartao" id="f-cancelar">
+      <p id="c-info" style="font-weight:700;margin:0 0 6px"></p>
+      <label for="c-motivo">Por que você quer cancelar? (opcional)</label><textarea id="c-motivo" maxlength="500"></textarea>
+      <label class="caixa-check" id="c-reemb-linha" hidden><input type="checkbox" id="c-reemb"><span>Assinei há menos de 7 dias e quero o valor de volta.</span></label>
+      <label for="c-conf">Para confirmar, digite <b>CANCELAR</b></label><input id="c-conf" autocomplete="off" required>
+      <div class="aviso" id="c-aviso"></div>
+      <button class="btn" type="submit" style="background:#A2331A;box-shadow:0 6px 0 #6E1F0E">Confirmar cancelamento</button>
+      <p style="text-align:center;margin:14px 0 0"><button type="button" class="link" data-voltar>Mudei de ideia, quero continuar</button></p>
+    </form>
+  </section>
+
+  <!-- painel master -->
+  <section id="tela-painel" hidden>
+    <div class="cartao" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+      <div><h2 style="font-size:28px">📊 Painel master</h2><span style="color:var(--suave);font-weight:700" id="p-atual"></span></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn pequeno claro" id="p-recarregar" style="margin:0">Atualizar</button><button class="btn pequeno" data-voltar style="margin:0">Ver as aulas</button></div>
+    </div>
+    <div class="numeros" id="p-numeros"></div>
+    <p style="font-size:13.5px;color:var(--suave);font-weight:700;margin:10px 2px 0" id="p-nota"></p>
+    <div class="filtros" id="p-filtros"></div>
+    <div id="p-lista"></div>
+    <div class="aviso" id="p-aviso"></div>
+  </section>
+
+  <div class="rodape">Clube da Sementinha · material para uso na sua igreja<br>Não compartilhe os arquivos fora da sua igreja. 💛<br><button class="link" id="ir-ajuda" style="font-size:14px;color:var(--suave)" hidden>Ajuda</button></div>
 </div>
 <script>
 // ---------- configuração ----------
@@ -124,8 +187,9 @@ async function api(corpo) {
   return d;
 }
 function tela(nome) {
-  ['entrar', 'senha', 'faixa', 'biblioteca'].forEach(t => $('#tela-' + t).hidden = t !== nome);
-  $('#sair').hidden = !token;
+  ['entrar', 'senha', 'faixa', 'biblioteca', 'ajuda', 'cancelar', 'painel'].forEach(t => $('#tela-' + t).hidden = t !== nome);
+  $('#sair').hidden = !token; $('#ir-ajuda').hidden = !token || nome === 'ajuda';
+  document.querySelector('.wrap').classList.toggle('larga', nome === 'painel');
   window.scrollTo(0, 0);
 }
 function aviso(id, msg, tipo = 'erro') { const el = $(id); el.className = 'aviso ' + (msg ? tipo : ''); el.textContent = msg || ''; }
@@ -161,7 +225,7 @@ async function baixar(botao, id, assistir) {
 function desenhar(d) {
   const a = d.assinante;
   $('#b-ola').textContent = 'Olá' + (a.nome ? ', ' + a.nome.split(' ')[0] : '') + '! 🌱';
-  $('#b-plano').textContent = PLANOS[a.plano] + (a.plano === 'uma' && a.faixa ? ' · ' + a.faixa.replace('-', ' a ') + ' anos' : '');
+  $('#b-plano').textContent = a.admin ? 'Conta master' : PLANOS[a.plano] + (a.plano === 'uma' && a.faixa ? ' · ' + a.faixa.replace('-', ' a ') + ' anos' : '');
   $('#b-status').textContent = a.ativo ? (a.valido_ate ? 'Acesso até ' + new Date(a.valido_ate).toLocaleDateString('pt-BR') : 'Assinatura ativa') : 'Assinatura inativa';
   if (GERENCIAR && a.periodo === 'mensal') { $('#b-gerenciar').hidden = false; $('#b-gerenciar').href = GERENCIAR + '?prefilled_email=' + encodeURIComponent(a.email); }
   const lista = $('#b-lista'); lista.innerHTML = '';
@@ -193,10 +257,80 @@ function desenhar(d) {
   });
 }
 
+// ---------- ajuda e cancelamento ----------
+let eu = null;
+$('#ir-ajuda').onclick = () => tela('ajuda');
+document.querySelectorAll('[data-voltar]').forEach(b => b.onclick = () => abrir());
+$('#ir-cancelar').onclick = () => {
+  if (!eu) return abrir();
+  aviso('#c-aviso'); $('#c-conf').value = ''; $('#c-motivo').value = ''; $('#c-reemb').checked = false;
+  $('#c-info').textContent = eu.admin ? 'Esta é a conta master: não há assinatura para cancelar.' : eu.cancelamento_pedido ? 'Seu pedido de cancelamento já foi registrado.'
+    : eu.periodo === 'anual' ? 'Seu plano é anual: não há novas cobranças. Você pode pedir o cancelamento do acesso.' : 'Ao cancelar, você não é mais cobrada e continua com acesso até o fim do período já pago.';
+  $('#c-reemb-linha').hidden = !!eu.admin;
+  tela('cancelar');
+};
+$('#f-cancelar').onsubmit = e => { e.preventDefault(); aviso('#c-aviso'); ocupado(e.submitter, async () => {
+  try { const d = await api({ acao: 'pedir_cancelamento', confirmacao: $('#c-conf').value, motivo: $('#c-motivo').value, reembolso: $('#c-reemb').checked });
+    aviso('#c-aviso', d.mensagem, 'ok'); eu.cancelamento_pedido = true; e.submitter.hidden = true; }
+  catch (err) { aviso('#c-aviso', err.message); } }); };
+
+// ---------- painel master ----------
+const R$ = v => 'R$ ' + Number(v).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const dia = d => d ? new Date(d).toLocaleDateString('pt-BR') : '';
+let painel = null, filtro = 'todos', busca = '';
+const NOMES_PLANO = { uma: 'Uma idade', todas: 'Todas as idades', completo: 'Completo' };
+function pintarPainel() {
+  const r = painel.resumo, n = $('#p-numeros');
+  const cx = (t, v, sub, cls = '') => `<div class="num ${cls}"><small>${t}</small><b>${v}</b><i>${sub}</i></div>`;
+  n.innerHTML = cx('Assinantes ativos', r.ativos, `${r.ativos_mensal} mensais · ${r.ativos_anual} anuais`, 'dest')
+    + cx('Entra todo mês', R$(r.receita_mensal), 'soma dos planos mensais ativos')
+    + cx('Previsão do mês que vem', R$(r.previsao_proximo_mes), 'sem quem já pediu para sair')
+    + cx('Anuais já recebidos', R$(r.anual_vendido), 'pagos à vista, valem 12 meses')
+    + cx('Novos em 30 dias', r.novos_30d, `${R$(r.entrou_30d)} em vendas novas`)
+    + cx('Por plano', `${r.por_plano.uma} · ${r.por_plano.todas} · ${r.por_plano.completo}`, 'Uma idade · Todas · Completo')
+    + cx('Cancelados', r.cancelados, `de ${r.total} que já assinaram`)
+    + cx('Pedidos para resolver', r.pendencias, 'cancelamento ou reembolso', r.pendencias ? 'alerta' : '');
+  $('#p-nota').textContent = 'Valores brutos, calculados pelo preço de cada plano. As taxas do Stripe e os estornos não estão descontados: o valor exato que cai na conta está no Stripe.'
+    + (painel.stripe_ligado ? '' : ' Para cancelar ou devolver dinheiro, use o botão “Abrir no Stripe” de cada assinante.');
+  $('#p-atual').textContent = 'Atualizado às ' + new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+  const pend = x => x.reembolso_pedido || (x.cancelamento_pedido_em && x.ativo);
+  const grupos = { todos: ['Todos', () => true], ativos: ['Ativos', x => x.ativo], pedidos: ['Pedidos', pend], cancelados: ['Cancelados', x => !x.ativo], semsenha: ['Não entraram ainda', x => x.ativo && !x.criou_senha] };
+  $('#p-filtros').innerHTML = Object.entries(grupos).map(([k, [rot, f]]) => `<button data-f="${k}" class="${k === filtro ? 'on' : ''}">${rot} (${painel.assinantes.filter(f).length})</button>`).join('') + `<input id="p-busca" placeholder="Buscar por nome, e-mail ou telefone" value="${busca.replace(/"/g, '')}">`;
+  $('#p-filtros').querySelectorAll('button').forEach(b => b.onclick = () => { filtro = b.dataset.f; pintarPainel(); });
+  $('#p-busca').oninput = e => { busca = e.target.value; lista(); };
+  const lista = () => {
+    const q = busca.trim().toLowerCase(), L = $('#p-lista'); L.innerHTML = '';
+    const itens = painel.assinantes.filter(grupos[filtro][1]).filter(x => !q || [x.nome, x.email, x.telefone].some(v => (v || '').toLowerCase().includes(q)));
+    if (!itens.length) { L.innerHTML = '<div class="aula trancada"><p class="tema">Nenhum assinante aqui ainda.</p></div>'; return; }
+    itens.forEach(x => {
+      const el = document.createElement('div'); el.className = 'assin';
+      const tel = (x.telefone || '').replace(/\D/g, '');
+      const et = (x.ativo ? '<span class="et">ativo</span>' : '<span class="et c">cancelado</span>') + (x.reembolso_pedido ? '<span class="et p">pediu reembolso</span>' : x.cancelamento_pedido_em && x.ativo ? `<span class="et p">${x.cancela_no_fim ? 'sai no fim do período' : 'pediu para cancelar'}</span>` : '') + (x.ativo && !x.criou_senha ? '<span class="et s">ainda não entrou</span>' : '');
+      const txt = (t) => { const d = document.createElement('div'); d.textContent = t || ''; return d.innerHTML; };
+      el.innerHTML = `<div><b>${txt(x.nome) || '(sem nome)'}</b><small>${txt(x.email)}${x.telefone ? ' · ' + txt(x.telefone) : ''}</small></div>
+        <div>${et}<small>${NOMES_PLANO[x.plano]}${x.faixa ? ' (' + x.faixa.replace('-', ' a ') + ')' : ''} · ${x.periodo} · ${R$(x.valor)}</small><small>desde ${dia(x.criado_em)}${x.valido_ate ? ' · acesso até ' + dia(x.valido_ate) : ''}</small></div>
+        <div class="acoes"></div>` + (x.cancelamento_motivo ? `<div class="motivo">Motivo informado: ${txt(x.cancelamento_motivo)}</div>` : '');
+      const ac = el.querySelector('.acoes');
+      const bt = (rot, fn, cls = '') => { const b = document.createElement('button'); b.textContent = rot; b.className = cls; b.onclick = () => fn(b); ac.appendChild(b); };
+      const agir = (tipo, pergunta) => async b => { if (pergunta && !confirm(pergunta)) return; aviso('#p-aviso'); await ocupado(b, async () => { try { painel = await api({ acao: 'admin_acao', id: x.id, tipo }); pintarPainel(); } catch (err) { aviso('#p-aviso', err.message); $('#p-aviso').scrollIntoView({ block: 'center' }); } }); };
+      if (tel) { const w = document.createElement('a'); w.textContent = 'WhatsApp'; w.target = '_blank'; w.rel = 'noopener'; w.href = 'https://wa.me/' + (tel.length <= 11 ? '55' + tel : tel); ac.appendChild(w); }
+      if (x.stripe_customer) { const s2 = document.createElement('a'); s2.textContent = 'Abrir no Stripe'; s2.target = '_blank'; s2.rel = 'noopener'; s2.href = 'https://dashboard.stripe.com/customers/' + encodeURIComponent(x.stripe_customer); ac.appendChild(s2); }
+      if (x.ativo) bt('Cancelar agora', agir('cancelar_agora', 'Cancelar agora a assinatura de ' + (x.nome || x.email) + '? O acesso é encerrado na hora.'), 'perigo');
+      else bt('Reativar acesso', agir('reativar', 'Liberar o acesso de ' + (x.nome || x.email) + ' de novo? Isso não cria cobrança no Stripe.'));
+      if (x.cancelamento_pedido_em || x.reembolso_pedido) bt('Marcar como resolvido', agir('resolver'));
+      L.appendChild(el);
+    });
+  };
+  lista();
+}
+async function abrirPainel() { tela('painel'); aviso('#p-aviso'); try { painel = await api({ acao: 'admin_painel' }); pintarPainel(); } catch (err) { aviso('#p-aviso', err.message); } }
+$('#b-painel').onclick = abrirPainel; $('#p-recarregar').onclick = abrirPainel;
+
 async function abrir() {
   if (!token) return tela(new URLSearchParams(location.search).has('bemvinda') ? 'senha' : 'entrar');
   try {
     const d = await api({ acao: 'biblioteca' });
+    eu = d.assinante; $('#b-painel').hidden = !eu.admin;
     if (d.assinante.plano === 'uma' && !d.assinante.faixa && d.assinante.ativo) return tela('faixa');
     desenhar(d); tela('biblioteca');
   } catch (err) { if (err.status === 401) { token = null; guarda.set('sementinha_token', null); return tela('entrar'); } tela('biblioteca'); aviso('#b-aviso', err.message); }
