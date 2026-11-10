@@ -366,7 +366,8 @@ function pintarMetricas(m) {
   $('#m-dias').innerHTML = cab('Dia', '<th>Assinaram</th>') + m.por_dia.slice().reverse().map(x => linha(fmtDia(x.dia), x, `<td>${x.assinaturas}</td>`)).join('');
   $('#m-origem').innerHTML = cab('De onde vieram') + (m.por_origem.length ? m.por_origem.map(x => linha(x.nome, x)).join('') : '<tr><td colspan="5">Nenhuma visita ainda neste período.</td></tr>');
   $('#m-anuncio').hidden = !m.por_anuncio.length;
-  $('#m-anuncio').innerHTML = cab('Qual anúncio') + m.por_anuncio.map(x => linha(x.nome, x)).join('');
+  const ANUNCIOS = { '120257796688200211': 'C1 · Davi (vídeo)', '120257798388900211': 'C4 · Aula pronta', '120257798389980211': 'C5 · Psiu, historinha' };
+  $('#m-anuncio').innerHTML = cab('Qual anúncio') + m.por_anuncio.map(x => linha(ANUNCIOS[x.nome] || x.nome, x)).join('');
   const NOMES = { uma: 'Uma idade', todas: 'Todas as idades', completo: 'Completo' };
   const cl = Object.entries(m.cliques_plano).sort((a, b) => b[1] - a[1]), maior = cl[0]?.[1] || 1;
   $('#m-planos').hidden = !cl.length;
