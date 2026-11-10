@@ -1,204 +1,386 @@
 <!doctype html>
 <html lang="pt-BR"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Clube da Sementinha · Área do assinante</title>
-<meta name="description" content="Área do assinante do Clube da Sementinha: aulas bíblicas prontas para o ministério infantil.">
-<meta name="robots" content="noindex">
-<link rel="icon" href="logo.png">
+<script>if(/[?&]bemvinda/.test(location.search))location.replace('entrar/'+location.search)</script>
+<title>Clube da Sementinha · Aulas bíblicas prontas para o ministério infantil</title>
+<meta name="description" content="Todo mês, aulas bíblicas prontas para as crianças da sua igreja: roteiro, história, atividades para 3 a 12 anos e historinha em vídeo. É só imprimir.">
+<meta property="og:title" content="Clube da Sementinha · Sua aula de domingo pronta, todo mês">
+<meta property="og:description" content="Roteiro, história, atividades para 3 a 12 anos e historinha em vídeo. É só imprimir e dar a aula.">
+<meta property="og:image" content="https://luisverbo.github.io/clube-da-sementinha/img/professora.jpg">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#2D2A4A;--paper:#FFFDF7;--sol:#FFC94A;--grama:#6FBF73;--verde:#3E9A44;--ceu:#4FA9E0;--coral:#FF7A59;--suave:#6B6785;--linha:#E9E3D2}
-*{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:Nunito,system-ui,sans-serif;font-size:17px;line-height:1.45;-webkit-text-size-adjust:100%}
-h1,h2,h3{font-family:'Baloo 2',sans-serif;font-weight:800;line-height:1.1;margin:0}
-.wrap{max-width:760px;margin:0 auto;padding:0 16px}
-header.topo{display:flex;align-items:center;gap:12px;padding:16px 0}
-header.topo img{width:52px;height:52px}
-header.topo b{font-family:'Baloo 2';font-size:24px;line-height:1}
-header.topo small{display:block;color:var(--suave);font-weight:700;font-size:13px}
-header.topo .sair{margin-left:auto}
-.cartao{background:#fff;border:2px solid var(--linha);border-radius:22px;padding:22px;box-shadow:0 6px 0 rgba(45,42,74,.08)}
-label{display:block;font-weight:800;font-size:15px;margin:14px 0 6px}
-input{width:100%;font:inherit;padding:14px 16px;border:2px solid var(--linha);border-radius:14px;background:#fff;color:var(--ink)}
-input:focus{outline:3px solid rgba(111,191,115,.45);border-color:var(--grama)}
-button{font:inherit;cursor:pointer;border:0}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--verde);color:#fff;font-family:'Baloo 2';font-weight:800;font-size:20px;padding:13px 22px;border-radius:60px;box-shadow:0 6px 0 #26702C;margin-top:18px;text-decoration:none}
-.btn:active{transform:translateY(3px);box-shadow:0 3px 0 #26702C}
-.btn[disabled]{opacity:.6;cursor:wait}
-.btn.claro{background:#fff;color:var(--ink);border:2px solid var(--ink);box-shadow:0 5px 0 var(--ink)}
-.btn.azul{background:var(--ceu);box-shadow:0 6px 0 #2E7FB3}
-.btn.pequeno{width:auto;font-size:17px;padding:9px 18px;margin-top:10px;box-shadow:0 4px 0 #26702C}
-.btn.pequeno.azul{box-shadow:0 4px 0 #2E7FB3}.btn.pequeno.claro{box-shadow:0 4px 0 var(--ink)}
-.link{background:none;color:var(--verde);font-weight:800;text-decoration:underline;padding:8px 0}
-.aviso{border-radius:14px;padding:12px 14px;font-weight:700;margin-top:14px;display:none}
-.aviso.erro{display:block;background:#FFE9E3;color:#A2331A}
-.aviso.ok{display:block;background:#E6F5E7;color:#215E26}
-.heroi{text-align:center;padding:10px 0 20px}
-.heroi img{width:120px}
-.heroi h1{font-size:34px;margin-top:6px}
-.heroi p{color:var(--suave);font-weight:700;margin:8px 0 0}
-.selo{display:inline-block;padding:4px 12px;border-radius:40px;font-weight:900;font-size:13px;color:#fff;background:var(--grama)}
-.selo.sol{background:var(--sol);color:var(--ink)}.selo.cinza{background:#C9C4D6}
-.mes{margin:26px 0 10px;display:flex;align-items:center;gap:10px}
-.mes h2{font-size:28px}
-.grupo{font-family:'Baloo 2';font-weight:800;font-size:19px;color:var(--suave);margin:18px 0 8px}
-.aula{background:#fff;border:2px solid var(--linha);border-radius:20px;padding:16px 18px;margin-bottom:12px;box-shadow:0 5px 0 rgba(45,42,74,.07)}
-.aula h3{font-size:23px}
-.aula .tema{color:var(--suave);font-weight:700;margin:2px 0 4px}
-.aula .acoes{display:flex;flex-wrap:wrap;gap:8px}
-.aula.trancada{background:#F5F2E8;border-style:dashed}
-.faixas{display:grid;gap:10px;margin-top:14px}
-.faixas button{background:#fff;border:2px solid var(--ink);border-radius:18px;padding:14px;font-family:'Baloo 2';font-weight:800;font-size:22px;color:var(--ink);box-shadow:0 5px 0 var(--ink)}
-.rodape{text-align:center;color:var(--suave);font-size:14px;font-weight:700;padding:30px 0 40px}
-.conta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:6px}
-video{width:100%;max-width:360px;border-radius:18px;display:block;margin:12px auto 0;background:#000}
-[hidden]{display:none!important}
-</style></head><body>
-<div class="wrap">
-  <header class="topo"><img src="logo.png" alt=""><div><b>Clube da Sementinha</b><small>Área do assinante</small></div><button class="link sair" id="sair" hidden>Sair</button></header>
+:root{--ink:#2D2A4A;--paper:#FFFDF7;--sol:#FFC94A;--sol2:#FFE38A;--grama:#6FBF73;--verde:#3E9A44;--verde2:#26702C;--ceu:#4FA9E0;--ceu2:#D9F0FC;--coral:#FF7A59;--roxo:#8E6CC9;--suave:#5F5B7A;--linha:#E9E3D2}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Nunito,system-ui,sans-serif;font-size:18px;line-height:1.5;overflow-x:hidden;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:'Baloo 2',sans-serif;font-weight:800;line-height:1.05;margin:0;text-wrap:balance}
+h2{font-size:clamp(32px,6vw,52px)}h2 em,h1 em{font-style:normal;color:var(--verde)}
+p{margin:0}.wrap{max-width:1100px;margin:0 auto;padding:0 20px;position:relative}
+section{position:relative;padding:72px 0}
+.sub{color:var(--suave);font-weight:700;font-size:clamp(18px,2.6vw,21px);max-width:640px;margin:14px auto 0;text-wrap:pretty}
+.centro{text-align:center}
+.selo{display:inline-block;background:var(--sol);color:var(--ink);font-weight:900;font-size:14px;letter-spacing:.6px;text-transform:uppercase;padding:8px 18px;border-radius:60px;box-shadow:0 5px 0 rgba(45,42,74,.3)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--verde);color:#fff;font-family:'Baloo 2';font-weight:800;font-size:22px;padding:14px 34px;border-radius:60px;box-shadow:0 7px 0 var(--verde2);text-decoration:none;border:0;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 0 var(--verde2)}.btn:active{transform:translateY(4px);box-shadow:0 3px 0 var(--verde2)}
+.btn.claro{background:#fff;color:var(--ink);box-shadow:0 7px 0 var(--ink);border:3px solid var(--ink)}.btn.claro:hover{box-shadow:0 10px 0 var(--ink)}
+.btn .seta{display:inline-block;transition:transform .2s}.btn:hover .seta{transform:translateX(5px)}
+/* aparecer ao rolar */
+.rev{opacity:0;transform:translateY(34px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rev.on{opacity:1;transform:none}
+.rev.pop{transform:scale(.85)}.rev.pop.on{transform:none}
+/* topo */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,253,247,.9);backdrop-filter:blur(10px);border-bottom:2px solid transparent;transition:border-color .3s}
+.nav.rolou{border-color:var(--linha)}
+.nav .wrap{display:flex;align-items:center;gap:12px;padding-top:10px;padding-bottom:10px}
+.nav img{width:44px;height:44px}.nav b{font-family:'Baloo 2';font-size:22px;line-height:1}
+.nav .acoes{margin-left:auto;display:flex;gap:14px;align-items:center}
+.nav a.txt{color:var(--ink);font-weight:800;text-decoration:none;font-size:16px}
+.nav .btn{font-size:17px;padding:8px 20px;box-shadow:0 4px 0 var(--verde2)}
+/* herói */
+.heroi{padding:36px 0 0;background:linear-gradient(#BFE6FB,#E8F6FE 55%,var(--paper));overflow:hidden}
+.heroi .grade{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:center}
+.heroi h1{font-size:clamp(42px,7.4vw,84px);margin-top:16px}
+.heroi h1 .risco{position:relative;white-space:nowrap}
+.heroi h1 .risco svg{position:absolute;left:-2%;bottom:-.12em;width:104%;height:.32em;overflow:visible}
+.heroi h1 .risco path{fill:none;stroke:var(--sol);stroke-width:10;stroke-linecap:round;stroke-dasharray:400;stroke-dashoffset:400;animation:risca 1s .7s forwards}
+@keyframes risca{to{stroke-dashoffset:0}}
+.heroi .sub{margin-left:0;max-width:520px}
+.heroi .cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:26px}
+.heroi .mini{font-weight:800;color:var(--suave);font-size:15px;margin-top:14px}
+.palco{position:relative;height:620px}
+.raios{position:absolute;left:50%;top:46%;width:900px;height:900px;margin:-450px;border-radius:50%;background:repeating-conic-gradient(rgba(255,255,255,.75) 0 8deg,transparent 8deg 18deg);-webkit-mask:radial-gradient(circle,#000 12%,transparent 62%);mask:radial-gradient(circle,#000 12%,transparent 62%);animation:gira 60s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+.folha{position:absolute;width:250px;border-radius:10px;box-shadow:0 18px 40px rgba(45,42,74,.25);border:1px solid var(--linha);will-change:transform}
+.folha.a{left:0;top:110px;transform:rotate(-11deg);animation:flutua 7s ease-in-out infinite}
+.folha.b{right:0;top:150px;transform:rotate(10deg);animation:flutua 8s ease-in-out -3s infinite}
+@keyframes flutua{50%{translate:0 -16px}}
+.celular{position:absolute;left:50%;top:26px;width:276px;margin-left:-138px;aspect-ratio:9/16.6;background:var(--ink);border-radius:44px;padding:12px;box-shadow:0 30px 60px rgba(45,42,74,.35),0 0 0 3px #48446b inset;transform:rotate(-2deg);animation:flutua 6s ease-in-out -1s infinite;z-index:3}
+.celular video,.celular img{width:100%;height:100%;object-fit:cover;border-radius:32px;display:block;background:#000}
+.celular::before{content:"";position:absolute;top:20px;left:50%;width:74px;height:20px;margin-left:-37px;background:var(--ink);border-radius:20px;z-index:2}
+.doodle{position:absolute;pointer-events:none;animation:flutua var(--t,6s) ease-in-out var(--a,0s) infinite}
+.doodle.gira{animation:piscar 2.6s ease-in-out var(--a,0s) infinite}
+@keyframes piscar{50%{transform:scale(1.35) rotate(25deg)}}
+.onda{display:block;width:100%;height:70px;margin-bottom:-1px}
+/* faixa que corre */
+.faixa{background:var(--ink);color:#fff;padding:14px 0;overflow:hidden;white-space:nowrap;font-family:'Baloo 2';font-weight:800;font-size:22px}
+.faixa div{display:inline-block;animation:corre 30s linear infinite}
+.faixa span{margin:0 22px}.faixa i{font-style:normal;color:var(--sol)}
+@keyframes corre{to{transform:translateX(-50%)}}
+/* dor */
+.dor .grade{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:center}
+.dor .foto{position:relative}
+.dor .foto img{width:100%;border-radius:36px;box-shadow:0 14px 0 rgba(45,42,74,.15);display:block;aspect-ratio:4/5;object-fit:cover}
+.dor .foto .hora{position:absolute;right:-12px;top:26px;background:var(--coral);color:#fff;font-family:'Baloo 2';font-weight:800;font-size:22px;padding:8px 18px;border-radius:60px;transform:rotate(7deg);box-shadow:0 6px 0 rgba(45,42,74,.3);animation:flutua 4s ease-in-out infinite}
+.dor ul{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px}
+.dor li{display:flex;gap:12px;align-items:flex-start;font-weight:700}
+.dor li::before{content:"😮‍💨";flex:none}
+.virada{margin-top:26px;background:#E6F5E7;border:3px solid var(--grama);border-radius:24px;padding:18px 22px;font-weight:800;font-size:20px}
+/* o que vem */
+.vem{background:linear-gradient(var(--paper),#FFF6DA 30%,#FFF6DA 70%,var(--paper))}
+.cartoes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.cartao{background:#fff;border:3px solid var(--ink);border-radius:28px;padding:24px;box-shadow:0 8px 0 var(--ink);transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.cartao:hover{transform:translateY(-6px) rotate(-1deg);box-shadow:0 14px 0 var(--ink)}
+.cartao .ic{width:64px;height:64px;border-radius:20px;display:grid;place-items:center;font-size:34px;margin-bottom:14px;background:var(--c,#FFE38A)}
+.cartao h3{font-size:25px}.cartao p{color:var(--suave);font-weight:700;margin-top:6px;font-size:17px}
+/* idades */
+.idades{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+.idade{text-align:center}
+.idade .moldura{position:relative;border-radius:22px;overflow:hidden;border:3px solid var(--ink);box-shadow:0 8px 0 var(--c);background:#fff;transition:transform .25s}
+.idade:hover .moldura{transform:rotate(-2deg) scale(1.03)}
+.idade img{width:100%;display:block;aspect-ratio:210/297;object-fit:cover;object-position:top}
+.idade .tag{display:inline-block;margin-top:-20px;position:relative;z-index:2;background:var(--c);color:#fff;font-family:'Baloo 2';font-weight:800;font-size:22px;padding:6px 22px;border-radius:60px;border:3px solid var(--ink)}
+.idade p{color:var(--suave);font-weight:700;margin-top:8px;font-size:17px}
+/* por dentro */
+.galeria{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:26px 20px 30px;margin:26px -20px 0;scrollbar-width:thin}
+.galeria figure{flex:none;margin:0;scroll-snap-align:center;width:min(70vw,290px);transition:transform .25s}
+.galeria figure:nth-child(odd){transform:rotate(-2deg)}.galeria figure:nth-child(even){transform:rotate(2deg)}
+.galeria figure:hover{transform:rotate(0) scale(1.04)}
+.galeria img{width:100%;display:block;border-radius:14px;border:2px solid var(--linha);box-shadow:0 14px 30px rgba(45,42,74,.18);background:#fff}
+.galeria figure.larga{width:min(86vw,470px);align-self:center}
+.galeria figcaption{text-align:center;font-weight:800;color:var(--suave);font-size:15px;margin-top:10px}
+/* historinha */
+.historinha{background:var(--ink);color:#fff;overflow:hidden}
+.historinha h2 em{color:var(--sol)}.historinha .sub{color:#CFCBE6;margin-left:0}
+.historinha .grade{display:grid;grid-template-columns:1fr auto;gap:50px;align-items:center}
+.historinha ul{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:12px;font-weight:700}
+.historinha li{display:flex;gap:12px}.historinha li::before{content:"⭐";flex:none}
+.tocar{position:relative;width:290px;aspect-ratio:9/16;border-radius:40px;overflow:hidden;border:6px solid #fff;box-shadow:0 0 0 6px var(--sol),0 30px 60px rgba(0,0,0,.45);transform:rotate(3deg);background:#000;cursor:pointer}
+.tocar video,.tocar img{width:100%;height:100%;object-fit:cover;display:block}
+.tocar .play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(45,42,74,.25);transition:background .2s}
+.tocar .play span{width:92px;height:92px;border-radius:50%;background:var(--sol);display:grid;place-items:center;box-shadow:0 7px 0 rgba(0,0,0,.3);animation:pulsa 1.8s ease-in-out infinite}
+.tocar .play span::after{content:"";border-left:30px solid var(--ink);border-top:19px solid transparent;border-bottom:19px solid transparent;margin-left:8px}
+@keyframes pulsa{50%{transform:scale(1.12)}}
+.estrelas i{position:absolute;width:6px;height:6px;border-radius:50%;background:#fff;animation:brilha 3s ease-in-out infinite}
+@keyframes brilha{50%{opacity:.15;transform:scale(.5)}}
+/* passos */
+.passos{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:44px;counter-reset:p}
+.passo{text-align:center;position:relative}
+.passo .n{width:84px;height:84px;margin:0 auto 14px;border-radius:50%;background:var(--sol);border:4px solid var(--ink);display:grid;place-items:center;font-family:'Baloo 2';font-weight:800;font-size:44px;box-shadow:0 7px 0 var(--ink)}
+.passo h3{font-size:25px}.passo p{color:var(--suave);font-weight:700;margin-top:6px}
+/* planos */
+.planos{background:linear-gradient(var(--paper),#E6F5E7 25%,#E6F5E7 80%,var(--paper))}
+.troca{display:inline-flex;background:#fff;border:3px solid var(--ink);border-radius:60px;padding:5px;margin-top:26px;box-shadow:0 5px 0 var(--ink)}
+.troca button{font:inherit;font-family:'Baloo 2';font-weight:800;font-size:19px;border:0;background:none;color:var(--ink);padding:8px 22px;border-radius:60px;cursor:pointer;transition:background .2s,color .2s}
+.troca button.on{background:var(--ink);color:#fff}.troca small{font-family:Nunito;font-weight:900;font-size:12px;background:var(--coral);color:#fff;padding:2px 8px;border-radius:20px;margin-left:6px;vertical-align:middle}
+.precos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:38px;align-items:stretch}
+.plano{background:#fff;border:3px solid var(--ink);border-radius:32px;padding:28px 24px;box-shadow:0 9px 0 var(--ink);display:flex;flex-direction:column;position:relative;transition:transform .2s}
+.plano:hover{transform:translateY(-6px)}
+.plano.top{background:var(--ink);color:#fff;box-shadow:0 9px 0 var(--sol);transform:scale(1.04)}.plano.top:hover{transform:scale(1.04) translateY(-6px)}
+.plano .fita{position:absolute;top:-18px;left:50%;transform:translateX(-50%);background:var(--sol);color:var(--ink);font-weight:900;font-size:14px;text-transform:uppercase;letter-spacing:.5px;padding:6px 18px;border-radius:60px;border:3px solid var(--ink);white-space:nowrap}
+.plano h3{font-size:28px}.plano .para{color:var(--suave);font-weight:700;font-size:16px;min-height:48px;margin-top:4px}.plano.top .para{color:#CFCBE6}
+.preco{font-family:'Baloo 2';font-weight:800;line-height:1;margin:16px 0 4px;display:flex;align-items:flex-start;gap:4px}
+.preco s{font-size:22px;text-decoration:none;margin-top:8px}.preco b{font-size:68px}.preco u{font-size:30px;text-decoration:none;margin-top:8px}
+.plano .por{font-weight:800;color:var(--suave);font-size:15px;min-height:44px}.plano.top .por{color:#CFCBE6}
+.plano ul{list-style:none;padding:0;margin:16px 0 22px;display:grid;gap:9px;font-weight:700;font-size:16.5px;flex:1}
+.plano li{display:block;position:relative;padding-left:26px}.plano li::before{content:"✓";font-weight:900;color:var(--verde);position:absolute;left:0}.plano.top li::before{color:var(--sol)}
+.plano li.nao{opacity:.45}.plano li.nao::before{content:"–";color:inherit}
+.plano .btn{width:100%;font-size:20px;padding:13px 16px}.plano.top .btn{background:var(--sol);color:var(--ink);box-shadow:0 7px 0 #C99400}
+.garantia{display:flex;gap:18px;align-items:center;max-width:720px;margin:44px auto 0;background:#fff;border:3px dashed var(--ink);border-radius:28px;padding:20px 24px;text-align:left}
+.garantia .escudo{flex:none;width:72px;height:72px;border-radius:50%;background:var(--grama);display:grid;place-items:center;font-size:36px}
+.garantia b{font-family:'Baloo 2';font-size:23px;display:block;line-height:1.1}.garantia span{color:var(--suave);font-weight:700;font-size:16.5px}
+/* amostra */
+.amostra .caixa{background:var(--ceu2);border:3px solid var(--ink);border-radius:36px;padding:34px;display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center;box-shadow:0 9px 0 var(--ceu)}
+.amostra img{width:190px;border-radius:12px;transform:rotate(-5deg);box-shadow:0 12px 26px rgba(45,42,74,.25)}
+/* faq */
+.faq{max-width:780px;margin:36px auto 0;display:grid;gap:12px}
+.faq details{background:#fff;border:3px solid var(--ink);border-radius:22px;box-shadow:0 6px 0 var(--ink);overflow:hidden}
+.faq summary{cursor:pointer;list-style:none;padding:18px 22px;font-family:'Baloo 2';font-weight:800;font-size:21px;display:flex;justify-content:space-between;gap:14px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;width:34px;height:34px;border-radius:50%;background:var(--sol);display:grid;place-items:center;font-size:26px;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{padding:0 22px 20px;color:var(--suave);font-weight:700}
+/* final */
+.final{background:linear-gradient(#BFE6FB,#D9F0FC 60%,#9ED39F 60%,var(--grama));padding-bottom:0;overflow:hidden;text-align:center}
+.final h2{font-size:clamp(36px,7vw,64px)}
+.final .davi{display:block;width:min(74vw,380px);margin:30px auto -6px;filter:drop-shadow(0 20px 20px rgba(45,42,74,.25))}
+footer{background:var(--ink);color:#CFCBE6;text-align:center;padding:26px 20px 90px;font-weight:700;font-size:15px}
+footer a{color:#fff}
+/* botão fixo no celular */
+.fixo{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;transform:translateY(140%);transition:transform .35s;display:none}
+.fixo.on{transform:none}.fixo .btn{width:100%;font-size:18px;padding:13px 12px;white-space:nowrap}
+@media(max-width:860px){
+ section{padding:54px 0}
+ .heroi .grade,.dor .grade,.historinha .grade,.amostra .caixa{grid-template-columns:1fr}
+ .heroi{text-align:center}.heroi .sub{margin:14px auto 0}.heroi .cta{justify-content:center}
+ .palco{height:520px;margin-top:10px}.celular{width:236px;margin-left:-118px}.folha{width:170px}.folha.a{left:-34px}.folha.b{right:-34px}
+ .cartoes{grid-template-columns:1fr 1fr;gap:12px}.cartao{padding:16px;border-radius:22px}.cartao h3{font-size:20px}.cartao p{font-size:15px}.cartao .ic{width:52px;height:52px;font-size:28px}
+ .idades,.passos,.precos{grid-template-columns:1fr}.idades{max-width:340px;margin-left:auto;margin-right:auto}
+ .plano.top{transform:none;order:-1}.plano.top:hover{transform:translateY(-6px)}
+ .historinha{text-align:center}.historinha .sub{margin:14px auto 0}.historinha ul{text-align:left;max-width:420px;margin-left:auto;margin-right:auto}.tocar{margin:0 auto}
+ .amostra .caixa{text-align:center;padding:26px 20px}.amostra img{margin:0 auto}
+ .nav a.txt{display:none}.fixo{display:block}
+ .garantia{flex-direction:column;text-align:center}
+ .dor .foto{max-width:380px;margin:0 auto}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rev{opacity:1;transform:none}}
+</style>
+<!-- Pixel da Meta (Clube da Sementinha) -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1667602411436159');fbq('track','PageView');</script>
+</head><body>
 
-  <!-- entrar -->
-  <section id="tela-entrar" hidden>
-    <div class="heroi"><h1>Que bom te ver aqui!</h1><p>Entre para baixar as aulas do mês.</p></div>
-    <form class="cartao" id="f-entrar">
-      <label for="e-email">E-mail da compra</label><input id="e-email" type="email" autocomplete="email" required>
-      <label for="e-senha">Senha</label><input id="e-senha" type="password" autocomplete="current-password" required>
-      <div class="aviso" id="e-aviso"></div>
-      <button class="btn" type="submit">Entrar</button>
-      <p style="text-align:center;margin:14px 0 0"><button type="button" class="link" data-ir="senha">É meu primeiro acesso / esqueci a senha</button></p>
-    </form>
-  </section>
+<div class="nav" id="nav"><div class="wrap"><img src="img/logo.png" alt=""><b>Clube da Sementinha</b>
+ <div class="acoes"><a class="txt" href="#dentro">Por dentro</a><a class="txt" href="#planos">Planos</a><a class="txt" href="entrar/">Já sou assinante</a><a class="btn" href="#planos">Assinar</a></div></div></div>
 
-  <!-- criar senha -->
-  <section id="tela-senha" hidden>
-    <div class="heroi"><h1 id="s-titulo">Crie a sua senha</h1><p id="s-sub">Use o e-mail e o telefone que você informou na compra.</p></div>
-    <form class="cartao" id="f-senha">
-      <label for="s-email">E-mail da compra</label><input id="s-email" type="email" autocomplete="email" required>
-      <label for="s-tel">Telefone (WhatsApp) da compra</label><input id="s-tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="(21) 99999-9999" required>
-      <label for="s-senha">Escolha uma senha (6 caracteres ou mais)</label><input id="s-senha" type="password" autocomplete="new-password" minlength="6" required>
-      <div class="aviso" id="s-aviso"></div>
-      <button class="btn" type="submit">Salvar e entrar</button>
-      <p style="text-align:center;margin:14px 0 0"><button type="button" class="link" data-ir="entrar">Já tenho senha</button></p>
-    </form>
-  </section>
-
-  <!-- escolher idade (plano de uma idade) -->
-  <section id="tela-faixa" hidden>
-    <div class="heroi"><h1>Qual é a idade da sua turma?</h1><p>Seu plano inclui as aulas de uma faixa de idade. Escolha com calma: a troca depois é só falando com a gente.</p></div>
-    <div class="cartao"><div class="faixas">
-      <button data-faixa="3-5">🖍️ 3 a 5 anos</button><button data-faixa="6-8">✂️ 6 a 8 anos</button><button data-faixa="9-12">🔎 9 a 12 anos</button>
-    </div><div class="aviso" id="f-aviso"></div></div>
-  </section>
-
-  <!-- biblioteca -->
-  <section id="tela-biblioteca" hidden>
-    <div class="cartao">
-      <h2 id="b-ola" style="font-size:26px">Olá!</h2>
-      <div class="conta"><span class="selo" id="b-plano"></span><span id="b-status" style="font-weight:700;color:var(--suave)"></span></div>
-      <a class="link" id="b-gerenciar" target="_blank" rel="noopener" hidden>Gerenciar assinatura</a>
-    </div>
-    <div id="b-lista"></div>
-    <div class="aviso" id="b-aviso"></div>
-  </section>
-
-  <div class="rodape">Clube da Sementinha · material para uso na sua igreja<br>Não compartilhe os arquivos fora da sua igreja. 💛</div>
+<!-- HERÓI -->
+<header class="heroi"><div class="wrap grade">
+ <div>
+  <span class="selo rev">Para professoras do ministério infantil e da EBD</span>
+  <h1 class="rev" style="--d:.08s">Sua aula de domingo <span class="risco"><em>pronta</em><svg viewBox="0 0 300 30" preserveAspectRatio="none"><path d="M5 20 Q80 2 150 16 T295 12"/></svg></span>. Todo mês.</h1>
+  <p class="sub rev" style="--d:.16s">Roteiro, história para contar, atividades para cada idade e historinha em vídeo. Você só imprime e vive o melhor da aula: as crianças.</p>
+  <div class="cta rev" style="--d:.24s"><a class="btn" href="#planos">Quero as aulas prontas <span class="seta">→</span></a><a class="btn claro" href="#dentro">Ver por dentro</a></div>
+  <p class="mini rev" style="--d:.3s">A partir de R$ 19,90 por mês · cancele quando quiser</p>
+ </div>
+ <div class="palco rev pop" style="--d:.2s">
+  <div class="raios"></div>
+  <img class="folha a" src="img/pagina-3.jpg" alt="Atividade de 3 a 5 anos" data-px="-26">
+  <img class="folha b" src="img/pagina-1.jpg" alt="Guia da professora" data-px="22">
+  <div class="celular" data-px="-10"><video src="img/historinha-loop.mp4" poster="img/historinha-capa.jpg" autoplay muted loop playsinline></video></div>
+  <svg class="doodle gira" style="left:6%;top:6%;--a:-.6s" width="54" height="54" viewBox="-50 -50 100 100"><path d="M0 -46 L11 -14 L45 -14 L18 6 L28 40 L0 20 L-28 40 L-18 6 L-45 -14 L-11 -14 Z" fill="#FFC94A" stroke="#2D2A4A" stroke-width="6" stroke-linejoin="round"/></svg>
+  <svg class="doodle gira" style="right:4%;top:2%;--a:-1.4s" width="40" height="40" viewBox="-50 -50 100 100"><path d="M0 -48 Q6 -6 48 0 Q6 6 0 48 Q-6 6 -48 0 Q-6 -6 0 -48Z" fill="#fff" stroke="#2D2A4A" stroke-width="5"/></svg>
+  <svg class="doodle" style="right:10%;bottom:8%;--t:5s" width="62" height="62" viewBox="-50 -50 100 100"><path d="M0 38 C-48 6 -40 -36 -14 -34 C-4 -34 0 -24 0 -20 C0 -24 4 -34 14 -34 C40 -36 48 6 0 38Z" fill="#FF7A59" stroke="#2D2A4A" stroke-width="6"/></svg>
+  <svg class="doodle" style="left:2%;bottom:12%;--t:7s;--a:-2s" width="96" height="56" viewBox="0 0 120 70"><path d="M24 58 Q4 58 6 40 Q8 26 24 28 Q28 8 50 10 Q66 12 70 26 Q94 20 100 40 Q104 58 84 58 Z" fill="#fff" stroke="#2D2A4A" stroke-width="5" stroke-linejoin="round"/></svg>
+ </div>
 </div>
+<svg class="onda" viewBox="0 0 1200 70" preserveAspectRatio="none"><path d="M0 40 Q150 0 300 34 T600 34 T900 30 T1200 36 V70 H0Z" fill="#2D2A4A"/></svg>
+</header>
+
+<div class="faixa" aria-hidden="true"><div>
+ <span>4 aulas de domingo por mês</span><i>✦</i><span>3 idades: 3 a 5 · 6 a 8 · 9 a 12 anos</span><i>✦</i><span>historinha em vídeo</span><i>✦</i><span>telão do versículo</span><i>✦</i><span>recado para a família</span><i>✦</i><span>é só imprimir</span><i>✦</i>
+ <span>4 aulas de domingo por mês</span><i>✦</i><span>3 idades: 3 a 5 · 6 a 8 · 9 a 12 anos</span><i>✦</i><span>historinha em vídeo</span><i>✦</i><span>telão do versículo</span><i>✦</i><span>recado para a família</span><i>✦</i><span>é só imprimir</span><i>✦</i>
+</div></div>
+
+<!-- DOR -->
+<section class="dor"><div class="wrap grade">
+ <div class="foto rev pop"><img src="img/sabado.jpg" alt="Professora preparando a aula tarde da noite" loading="lazy"><span class="hora">23h47 de sábado</span></div>
+ <div>
+  <h2 class="rev">Sábado à noite. E a aula de domingo <em style="color:var(--coral)">ainda não saiu</em>.</h2>
+  <ul>
+   <li class="rev" style="--d:.05s">Você procura atividade na internet e nada combina com a história.</li>
+   <li class="rev" style="--d:.1s">A turma tem criança de 4 e de 11 anos, e a mesma folhinha não serve para as duas.</li>
+   <li class="rev" style="--d:.15s">A igreja não tem verba para revista, e você tira do próprio bolso.</li>
+   <li class="rev" style="--d:.2s">No fim, sobra pouco tempo para o que importa: orar e se preparar para as crianças.</li>
+  </ul>
+  <div class="virada rev" style="--d:.25s">🌱 No Clube da Sementinha a aula chega pronta. Você abre, imprime e entra na sala tranquila.</div>
+ </div>
+</div></section>
+
+<!-- O QUE VEM -->
+<section class="vem"><div class="wrap centro">
+ <span class="selo rev">Todo mês no seu portal</span>
+ <h2 class="rev" style="margin-top:14px">Tudo que a aula precisa, <em>num lugar só</em></h2>
+ <div class="cartoes">
+  <div class="cartao rev" style="--c:#FFE38A"><div class="ic">📋</div><h3>Guia da professora</h3><p>Objetivo, materiais e o roteiro da aula minuto a minuto.</p></div>
+  <div class="cartao rev" style="--c:#FFD2C6;--d:.06s"><div class="ic">📖</div><h3>História para contar</h3><p>Texto pronto, com dicas de contação e versão curtinha para os pequenos.</p></div>
+  <div class="cartao rev" style="--c:#CDEBCF;--d:.12s"><div class="ic">🖍️</div><h3>Atividade por idade</h3><p>Uma folha diferente para 3 a 5, 6 a 8 e 9 a 12 anos, da mesma história.</p></div>
+  <div class="cartao rev" style="--c:#D9F0FC"><div class="ic">🎬</div><h3>Historinha em vídeo</h3><p>Um desenho curtinho da história, para a criança rever em casa com a família.</p></div>
+  <div class="cartao rev" style="--c:#E6DBF7;--d:.06s"><div class="ic">📺</div><h3>Telão do versículo</h3><p>A tela pronta para projetar ou mostrar na TV da sala.</p></div>
+  <div class="cartao rev" style="--c:#FFE38A;--d:.12s"><div class="ic">💌</div><h3>Recado para a família</h3><p>Um bilhete para enviar aos pais, com o versículo e o que perguntar em casa.</p></div>
+ </div>
+</div></section>
+
+<!-- IDADES -->
+<section><div class="wrap centro">
+ <h2 class="rev">A mesma história, <em>do jeito de cada idade</em></h2>
+ <p class="sub rev">Enquanto os pequenos pintam, os maiores resolvem um desafio. Todo mundo sai falando da mesma história.</p>
+ <div class="idades">
+  <div class="idade rev" style="--c:#E0A800"><div class="moldura"><img src="img/pagina-3.jpg" alt="Atividade para 3 a 5 anos" loading="lazy"></div><span class="tag">3 a 5 anos</span><p>Pintar, contar e desenhar.</p></div>
+  <div class="idade rev" style="--c:#6FBF73;--d:.08s"><div class="moldura"><img src="img/pagina-4.jpg" alt="Atividade para 6 a 8 anos" loading="lazy"></div><span class="tag">6 a 8 anos</span><p>Recortar, ordenar e completar o versículo.</p></div>
+  <div class="idade rev" style="--c:#4FA9E0;--d:.16s"><div class="moldura"><img src="img/pagina-5.jpg" alt="Atividade para 9 a 12 anos" loading="lazy"></div><span class="tag">9 a 12 anos</span><p>Caça-palavras, perguntas e desafio da semana.</p></div>
+ </div>
+</div></section>
+
+<!-- POR DENTRO -->
+<section id="dentro" style="background:#FFF6DA;padding-bottom:40px"><div class="wrap centro">
+ <span class="selo rev">Material de verdade</span>
+ <h2 class="rev" style="margin-top:14px">Dá uma olhada <em>por dentro</em></h2>
+ <p class="sub rev">Estas são páginas das aulas de Davi. Arraste para o lado. 👉</p>
+ <div class="galeria rev">
+  <figure><img src="img/pagina-1.jpg" alt="" loading="lazy"><figcaption>Guia da professora</figcaption></figure>
+  <figure><img src="img/pagina-2.jpg" alt="" loading="lazy"><figcaption>História para contar</figcaption></figure>
+  <figure><img src="img/pagina-3.jpg" alt="" loading="lazy"><figcaption>Atividade · 3 a 5 anos</figcaption></figure>
+  <figure><img src="img/pagina-4.jpg" alt="" loading="lazy"><figcaption>Atividade · 6 a 8 anos</figcaption></figure>
+  <figure><img src="img/pagina-5.jpg" alt="" loading="lazy"><figcaption>Atividade · 9 a 12 anos</figcaption></figure>
+  <figure class="larga"><img src="img/telao.jpg" alt="" loading="lazy"><figcaption>Telão do versículo</figcaption></figure>
+  <figure><img src="img/bilhete.jpg" alt="" loading="lazy"><figcaption>Recado para a família</figcaption></figure>
+  <figure><img src="img/quinta-4.jpg" alt="" loading="lazy"><figcaption>Meio da semana · sinal secreto</figcaption></figure>
+  <figure><img src="img/quinta-5.jpg" alt="" loading="lazy"><figcaption>Meio da semana · 9 a 12 anos</figcaption></figure>
+ </div>
+</div></section>
+
+<!-- HISTORINHA -->
+<section class="historinha"><div class="estrelas" aria-hidden="true"></div><div class="wrap grade">
+ <div>
+  <span class="selo rev">Só no Clube</span>
+  <h2 class="rev" style="margin-top:14px">A aula continua em casa, com a <em>historinha em vídeo</em></h2>
+  <p class="sub rev">Cada aula de domingo vem com um desenho curtinho da história. Você manda no grupo dos pais e a criança assiste de novo com a família.</p>
+  <ul>
+   <li class="rev">Menos de 1 minuto, no formato do celular.</li>
+   <li class="rev" style="--d:.06s">Termina com o versículo da semana para repetir antes de dormir.</li>
+   <li class="rev" style="--d:.12s">Os pais veem de perto o trabalho do ministério infantil.</li>
+  </ul>
+ </div>
+ <div class="tocar rev pop" id="tocar"><img src="img/historinha-capa.jpg" alt="Historinha de Davi e Golias" loading="lazy"><div class="play"><span></span></div></div>
+</div></section>
+
+<!-- COMO FUNCIONA -->
+<section><div class="wrap centro">
+ <h2 class="rev">Simples como <em>1, 2, 3</em></h2>
+ <div class="passos">
+  <div class="passo rev"><div class="n">1</div><h3>Assine</h3><p>Escolha o plano e pague com cartão ou Pix. Leva 2 minutos.</p></div>
+  <div class="passo rev" style="--d:.1s"><div class="n">2</div><h3>Entre no portal</h3><p>Crie a sua senha e encontre as aulas do mês separadas por domingo e por idade.</p></div>
+  <div class="passo rev" style="--d:.2s"><div class="n">3</div><h3>Baixe e imprima</h3><p>Imprima quantas cópias a sua turma precisar e dê a aula.</p></div>
+ </div>
+</div></section>
+
+<!-- PLANOS -->
+<section class="planos" id="planos"><div class="wrap centro">
+ <span class="selo rev">Escolha o seu</span>
+ <h2 class="rev" style="margin-top:14px">Menos que <em>um lanche</em> por mês</h2>
+ <p class="sub rev">Um plano vale para a igreja inteira: imprima para todas as crianças da turma.</p>
+ <div class="troca rev" role="tablist"><button class="on" data-per="mensal">Mensal</button><button data-per="anual">Anual <small>2 meses grátis</small></button></div>
+ <div class="precos">
+  <div class="plano rev" data-plano="uma">
+   <h3>Uma idade</h3><p class="para">Para a professora de uma turma só.</p>
+   <div class="preco"><s>R$</s><b data-v>19</b><u data-c>,90</u></div><p class="por" data-por>por mês, no cartão</p>
+   <ul><li>4 aulas de domingo por mês</li><li>Atividades de <b>1 faixa de idade</b></li><li>Historinha em vídeo</li><li>Telão e recado para a família</li><li class="nao">Aulas do meio da semana</li></ul>
+   <a class="btn claro" data-link>Assinar Uma idade</a>
+  </div>
+  <div class="plano top rev" data-plano="todas" style="--d:.08s">
+   <span class="fita">⭐ Recomendado</span>
+   <h3>Todas as idades</h3><p class="para">Para a igreja com crianças de 3 a 12 anos.</p>
+   <div class="preco"><s>R$</s><b data-v>29</b><u data-c>,90</u></div><p class="por" data-por>por mês, no cartão</p>
+   <ul><li>4 aulas de domingo por mês</li><li>Atividades das <b>3 faixas de idade</b></li><li>Historinha em vídeo</li><li>Telão e recado para a família</li><li class="nao">Aulas do meio da semana</li></ul>
+   <a class="btn" data-link>Assinar Todas as idades</a>
+  </div>
+  <div class="plano rev" data-plano="completo" style="--d:.16s">
+   <h3>Completo</h3><p class="para">Para quem tem escolinha no domingo e no meio da semana.</p>
+   <div class="preco"><s>R$</s><b data-v>39</b><u data-c>,90</u></div><p class="por" data-por>por mês, no cartão</p>
+   <ul><li>4 aulas de domingo por mês</li><li>Atividades das <b>3 faixas de idade</b></li><li>Historinha em vídeo</li><li>Telão e recado para a família</li><li><b>+ 4 aulas do meio da semana</b>, com histórias diferentes</li></ul>
+   <a class="btn claro" data-link>Assinar Completo</a>
+  </div>
+ </div>
+ <div class="garantia rev"><div class="escudo">🛡️</div><div><b>7 dias para conhecer sem risco</b><span>Se nos primeiros 7 dias você achar que o Clube não é para a sua igreja, é só pedir e devolvemos o valor pago. E você cancela a assinatura quando quiser, sem multa.</span></div></div>
+</div></section>
+
+<!-- AMOSTRA -->
+<section class="amostra"><div class="wrap"><div class="caixa rev">
+ <img src="img/pagina-1.jpg" alt="" loading="lazy">
+ <div><h2 style="font-size:clamp(28px,5vw,40px)">Quer testar antes de assinar?</h2><p class="sub" style="margin-left:0">Baixe grátis a aula completa de Davi e Golias e use no próximo domingo.</p><a class="btn claro" style="margin-top:20px" href="https://funil-pro.vercel.app/pg/aula-gratis-sementinha">Baixar a aula grátis <span class="seta">→</span></a></div>
+</div></div></section>
+
+<!-- FAQ -->
+<section style="padding-top:20px"><div class="wrap centro">
+ <h2 class="rev">Perguntas <em>frequentes</em></h2>
+ <div class="faq" style="text-align:left">
+  <details class="rev"><summary>Como eu recebo as aulas?</summary><p>Assim que o pagamento é aprovado, você cria a sua senha e entra no portal do assinante. Lá estão as aulas do mês em PDF, separadas por domingo e por idade, mais a historinha em vídeo. É só baixar.</p></details>
+  <details class="rev"><summary>Posso imprimir para a turma toda?</summary><p>Pode. Um plano vale para a sua igreja: imprima quantas cópias precisar para as crianças. Só pedimos que não repasse os arquivos para outras igrejas.</p></details>
+  <details class="rev"><summary>Serve para a minha denominação?</summary><p>As aulas contam as histórias da Bíblia e trabalham valores como coragem, amizade e confiança em Deus, sem entrar em pontos que mudam de uma denominação para outra. Baixe a aula grátis e veja se combina com a sua igreja.</p></details>
+  <details class="rev"><summary>Preciso de material caro ou de projetor?</summary><p>Não. As atividades são em preto e branco para gastar pouca tinta, e os materiais das dinâmicas são coisas simples, como papel, lápis de cor e caixas de papelão. O telão é um extra para quem tem TV ou projetor na sala.</p></details>
+  <details class="rev"><summary>Qual é a diferença do plano Completo?</summary><p>Ele traz também 4 aulas por mês para o culto do meio da semana. São histórias diferentes das de domingo, para a criança que vem nos dois dias não repetir a aula.</p></details>
+  <details class="rev"><summary>Quais são as formas de pagamento?</summary><p>No plano mensal, cartão de crédito, cobrado todo mês. No plano anual, cartão ou Pix: você paga uma vez e tem 12 meses de acesso pelo preço de 10.</p></details>
+  <details class="rev"><summary>E se eu quiser cancelar?</summary><p>Você cancela quando quiser, sem multa, e continua com acesso até o fim do período já pago. Nos primeiros 7 dias, se pedir, devolvemos o valor.</p></details>
+ </div>
+</div></section>
+
+<!-- FINAL -->
+<section class="final"><div class="wrap">
+ <h2 class="rev">No próximo domingo, entre na sala <em>com a aula pronta</em></h2>
+ <p class="sub rev">E com tempo de sobra para o que só você pode fazer: amar essas crianças.</p>
+ <a class="btn rev" style="margin-top:26px;font-size:24px" href="#planos">Escolher meu plano <span class="seta">→</span></a>
+ <img class="davi rev" src="img/davi-recorte.webp" alt="" loading="lazy">
+</div></section>
+<footer><img src="img/logo.png" alt="" width="48" height="48"><br>Clube da Sementinha · aulas bíblicas prontas para o ministério infantil<br><a href="entrar/">Área do assinante</a> · <a href="https://whatsapp.com/channel/0029VbE7buTCcW4mg14YUi16">Canal no WhatsApp</a><br><span style="font-size:13px">As ilustrações e a narração da historinha são feitas com inteligência artificial.</span></footer>
+<div class="fixo" id="fixo"><a class="btn" href="#planos">Ver os planos · desde R$ 19,90</a></div>
+
 <script>
-// ---------- configuração ----------
-const API = 'https://hcadyqktfowfkxsbogmj.supabase.co/functions/v1/sementinha';
-const GERENCIAR = '';            // link do Portal do Cliente do Stripe (trocar cartão, cancelar)
-const PAGINA_PLANOS = '';        // página de vendas, para quem ainda não assina ou quer subir de plano
-// -----------------------------------
-const $ = s => document.querySelector(s);
-const guarda = { get: k => { try { return localStorage.getItem(k) } catch { return null } }, set: (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v) } catch {} } };
-let token = guarda.get('sementinha_token');
-const PLANOS = { uma: 'Plano Uma idade', todas: 'Plano Todas as idades', completo: 'Plano Completo' };
-const MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
-
-async function api(corpo) {
-  const r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: 'Bearer ' + token } : {}) }, body: JSON.stringify(corpo) });
-  const d = await r.json().catch(() => ({ erro: 'Sem conexão. Tente de novo.' }));
-  if (!r.ok) throw Object.assign(new Error(d.erro || 'Algo deu errado.'), { status: r.status });
-  return d;
+const LINKS = {
+ mensal: { uma: 'https://buy.stripe.com/4gMdR892dfHK1JQ9BbeAg03', todas: 'https://buy.stripe.com/eVq9AScep8fibkq28JeAg04', completo: 'https://buy.stripe.com/bJe9ASbal1QU1JQ3cNeAg05' },
+ anual: { uma: 'https://buy.stripe.com/4gM7sK7Y9eDG1JQ00BeAg06', todas: 'https://buy.stripe.com/cNi5kC5Q1dzCbkq00BeAg07', completo: 'https://buy.stripe.com/3cIaEW2DP9jmdsyfZzeAg08' } };
+const PRECOS = { mensal: { uma: ['19', ',90'], todas: ['29', ',90'], completo: ['39', ',90'] }, anual: { uma: ['199', ''], todas: ['299', ''], completo: ['399', ''] } };
+let periodo = 'mensal';
+function pintar() {
+  document.querySelectorAll('.plano').forEach(p => { const k = p.dataset.plano;
+    p.querySelector('[data-v]').textContent = PRECOS[periodo][k][0]; p.querySelector('[data-c]').textContent = PRECOS[periodo][k][1];
+    p.querySelector('[data-por]').innerHTML = periodo === 'mensal' ? 'por mês, no cartão' : 'por ano, no Pix ou cartão<br>12 meses pelo preço de 10';
+    p.querySelector('[data-link]').href = LINKS[periodo][k]; });
+  document.querySelectorAll('.troca button').forEach(b => b.classList.toggle('on', b.dataset.per === periodo));
 }
-function tela(nome) {
-  ['entrar', 'senha', 'faixa', 'biblioteca'].forEach(t => $('#tela-' + t).hidden = t !== nome);
-  $('#sair').hidden = !token;
-  window.scrollTo(0, 0);
-}
-function aviso(id, msg, tipo = 'erro') { const el = $(id); el.className = 'aviso ' + (msg ? tipo : ''); el.textContent = msg || ''; }
-async function ocupado(botao, fn) { const t = botao.textContent; botao.disabled = true; botao.textContent = 'Aguarde…'; try { await fn() } finally { botao.disabled = false; botao.textContent = t } }
-function entrou(d) { token = d.token; guarda.set('sementinha_token', token); abrir(); }
-
-document.querySelectorAll('[data-ir]').forEach(b => b.onclick = () => { $('#s-email').value = $('#e-email').value; tela(b.dataset.ir); });
-$('#f-entrar').onsubmit = e => { e.preventDefault(); aviso('#e-aviso'); ocupado(e.submitter, async () => {
-  try {
-    const d = await api({ acao: 'login', email: $('#e-email').value, senha: $('#e-senha').value });
-    if (d.primeiro_acesso) { $('#s-email').value = $('#e-email').value; aviso('#s-aviso', 'É o seu primeiro acesso: crie a sua senha.', 'ok'); return tela('senha'); }
-    entrou(d);
-  } catch (err) { aviso('#e-aviso', err.message); } }); };
-$('#f-senha').onsubmit = e => { e.preventDefault(); aviso('#s-aviso'); ocupado(e.submitter, async () => {
-  try { entrou(await api({ acao: 'definir_senha', email: $('#s-email').value, telefone: $('#s-tel').value, senha: $('#s-senha').value })); }
-  catch (err) { aviso('#s-aviso', err.message); } }); };
-$('#sair').onclick = async () => { try { await api({ acao: 'sair' }) } catch {} token = null; guarda.set('sementinha_token', null); tela('entrar'); };
-document.querySelectorAll('[data-faixa]').forEach(b => b.onclick = () => ocupado(b, async () => {
-  if (!confirm('Confirmar ' + b.textContent.trim() + ' como a idade do seu plano?')) return;
-  try { await api({ acao: 'escolher_faixa', faixa: b.dataset.faixa }); abrir(); } catch (err) { aviso('#f-aviso', err.message); } }));
-
-async function baixar(botao, id, assistir) {
-  aviso('#b-aviso');
-  await ocupado(botao, async () => {
-    try {
-      const d = await api({ acao: 'baixar', id, assistir });
-      if (assistir) { let v = botao.closest('.aula').querySelector('video'); if (!v) { v = document.createElement('video'); v.controls = true; v.playsInline = true; botao.closest('.aula').appendChild(v); } v.src = d.url; v.play().catch(() => {}); }
-      else { const a = document.createElement('a'); a.href = d.url; a.download = ''; document.body.appendChild(a); a.click(); a.remove(); }
-    } catch (err) { if (err.status === 401) return abrir(); aviso('#b-aviso', err.message); $('#b-aviso').scrollIntoView({ block: 'center' }); }
-  });
-}
-
-function desenhar(d) {
-  const a = d.assinante;
-  $('#b-ola').textContent = 'Olá' + (a.nome ? ', ' + a.nome.split(' ')[0] : '') + '! 🌱';
-  $('#b-plano').textContent = PLANOS[a.plano] + (a.plano === 'uma' && a.faixa ? ' · ' + a.faixa.replace('-', ' a ') + ' anos' : '');
-  $('#b-status').textContent = a.ativo ? (a.valido_ate ? 'Acesso até ' + new Date(a.valido_ate).toLocaleDateString('pt-BR') : 'Assinatura ativa') : 'Assinatura inativa';
-  if (GERENCIAR && a.periodo === 'mensal') { $('#b-gerenciar').hidden = false; $('#b-gerenciar').href = GERENCIAR + '?prefilled_email=' + encodeURIComponent(a.email); }
-  const lista = $('#b-lista'); lista.innerHTML = '';
-  if (!a.ativo) { lista.innerHTML = '<div class="aula trancada"><h3>Sua assinatura não está ativa</h3><p class="tema">Regularize o pagamento para voltar a baixar as aulas.</p></div>'; return; }
-  const meses = {};
-  d.aulas.forEach(x => (meses[x.mes] ??= []).push(x));
-  Object.keys(meses).sort().reverse().forEach(m => {
-    const [ano, mm] = m.split('-'), itens = meses[m], aberto = itens.some(x => x.liberado);
-    const sec = document.createElement('div');
-    sec.innerHTML = `<div class="mes"><h2>${MESES[mm - 1][0].toUpperCase() + MESES[mm - 1].slice(1)} de ${ano}</h2>${aberto ? '' : '<span class="selo cinza">em breve</span>'}</div>`;
-    [['domingo', 'Aulas de domingo'], ['semana', 'Aulas do meio da semana']].forEach(([tipo, titulo]) => {
-      const doTipo = itens.filter(x => x.tipo === tipo); if (!doTipo.length) return;
-      sec.insertAdjacentHTML('beforeend', `<div class="grupo">${titulo}</div>`);
-      doTipo.forEach(x => {
-        const el = document.createElement('div'); el.className = 'aula' + (x.liberado && x.incluso ? '' : ' trancada');
-        if (!x.liberado) el.innerHTML = `<h3>🔒 Aula ${x.aula}</h3><p class="tema">Libera em ${new Date(x.libera_em + 'T12:00').toLocaleDateString('pt-BR')}</p>`;
-        else {
-          el.innerHTML = `<h3>${x.titulo}</h3><p class="tema">${x.tema || ''}${x.referencia ? ' · ' + x.referencia : ''}</p>`;
-          if (!x.incluso) el.insertAdjacentHTML('beforeend', `<p style="margin:6px 0 0;font-weight:700">🔒 As aulas do meio da semana fazem parte do Plano Completo.</p>${PAGINA_PLANOS ? `<a class="btn pequeno claro" href="${PAGINA_PLANOS}">Conhecer o Plano Completo</a>` : ''}`);
-          else { const ac = document.createElement('div'); ac.className = 'acoes';
-            x.itens.forEach(i => { const b = document.createElement('button'); b.className = 'btn pequeno' + (i.formato === 'video' ? ' azul' : ''); b.textContent = (i.formato === 'video' ? '▶ ' : '⬇ ') + i.rotulo; b.onclick = () => baixar(b, i.id, i.formato === 'video'); ac.appendChild(b);
-              if (i.formato === 'video') { const b2 = document.createElement('button'); b2.className = 'btn pequeno claro'; b2.textContent = '⬇ Baixar o vídeo'; b2.onclick = () => baixar(b2, i.id, false); ac.appendChild(b2); } });
-            el.appendChild(ac); }
-        }
-        sec.appendChild(el);
-      });
-    });
-    lista.appendChild(sec);
-  });
-}
-
-async function abrir() {
-  if (!token) return tela(new URLSearchParams(location.search).has('bemvinda') ? 'senha' : 'entrar');
-  try {
-    const d = await api({ acao: 'biblioteca' });
-    if (d.assinante.plano === 'uma' && !d.assinante.faixa && d.assinante.ativo) return tela('faixa');
-    desenhar(d); tela('biblioteca');
-  } catch (err) { if (err.status === 401) { token = null; guarda.set('sementinha_token', null); return tela('entrar'); } tela('biblioteca'); aviso('#b-aviso', err.message); }
-}
-if (new URLSearchParams(location.search).has('bemvinda')) { $('#s-titulo').textContent = 'Pagamento confirmado! 🎉'; $('#s-sub').textContent = 'Agora crie a sua senha para entrar. Use o e-mail e o telefone que você informou na compra.'; }
-abrir();
-</script></body></html>
+document.querySelectorAll('.troca button').forEach(b => b.onclick = () => { periodo = b.dataset.per; pintar(); });
+document.querySelectorAll('[data-link]').forEach(a => a.addEventListener('click', () => { try { fbq('track', 'InitiateCheckout', { content_name: a.closest('.plano').dataset.plano + '-' + periodo }) } catch (e) {} }));
+pintar();
+// aparecer ao rolar
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), { threshold: .12, rootMargin: '0px 0px -40px' });
+document.querySelectorAll('.rev').forEach(el => io.observe(el));
+// topo, botão fixo e leve paralaxe no herói
+const nav = document.getElementById('nav'), fixo = document.getElementById('fixo'), planos = document.getElementById('planos'), px = [...document.querySelectorAll('[data-px]')];
+const calmo = matchMedia('(prefers-reduced-motion: reduce)').matches;
+addEventListener('scroll', () => { const y = scrollY; nav.classList.toggle('rolou', y > 10);
+  const r = planos.getBoundingClientRect(); fixo.classList.toggle('on', y > 620 && (r.top > innerHeight || r.bottom < 0));
+  if (!calmo && y < 900) px.forEach(el => el.style.translate = `0 ${y * el.dataset.px / 100}px`); }, { passive: true });
+// estrelinhas da seção escura
+const ceu = document.querySelector('.estrelas'); for (let i = 0; i < 40; i++) { const s = document.createElement('i'); s.style.cssText = `left:${Math.random() * 100}%;top:${Math.random() * 100}%;animation-delay:${-Math.random() * 3}s;opacity:${.3 + Math.random() * .7}`; ceu.appendChild(s); }
+// tocar a historinha só quando a pessoa pedir (o vídeo é pesado)
+document.getElementById('tocar').onclick = function () { if (this.querySelector('video')) return; this.innerHTML = '<video src="img/historinha-davi.mp4" controls autoplay playsinline></video>'; try { fbq('trackCustom', 'AssistiuHistorinha') } catch (e) {} };
+</script>
+</body></html>

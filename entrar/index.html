@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clube da Sementinha · Área do assinante</title>
+<meta name="description" content="Área do assinante do Clube da Sementinha: aulas bíblicas prontas para o ministério infantil.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#2D2A4A;--paper:#FFFDF7;--sol:#FFC94A;--grama:#6FBF73;--verde:#3E9A44;--ceu:#4FA9E0;--coral:#FF7A59;--suave:#6B6785;--linha:#E9E3D2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Nunito,system-ui,sans-serif;font-size:17px;line-height:1.45;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:'Baloo 2',sans-serif;font-weight:800;line-height:1.1;margin:0}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+header.topo{display:flex;align-items:center;gap:12px;padding:16px 0}
+header.topo img{width:52px;height:52px}
+header.topo b{font-family:'Baloo 2';font-size:24px;line-height:1}
+header.topo small{display:block;color:var(--suave);font-weight:700;font-size:13px}
+header.topo .sair{margin-left:auto}
+.cartao{background:#fff;border:2px solid var(--linha);border-radius:22px;padding:22px;box-shadow:0 6px 0 rgba(45,42,74,.08)}
+label{display:block;font-weight:800;font-size:15px;margin:14px 0 6px}
+input{width:100%;font:inherit;padding:14px 16px;border:2px solid var(--linha);border-radius:14px;background:#fff;color:var(--ink)}
+input:focus{outline:3px solid rgba(111,191,115,.45);border-color:var(--grama)}
+button{font:inherit;cursor:pointer;border:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--verde);color:#fff;font-family:'Baloo 2';font-weight:800;font-size:20px;padding:13px 22px;border-radius:60px;box-shadow:0 6px 0 #26702C;margin-top:18px;text-decoration:none}
+.btn:active{transform:translateY(3px);box-shadow:0 3px 0 #26702C}
+.btn[disabled]{opacity:.6;cursor:wait}
+.btn.claro{background:#fff;color:var(--ink);border:2px solid var(--ink);box-shadow:0 5px 0 var(--ink)}
+.btn.azul{background:var(--ceu);box-shadow:0 6px 0 #2E7FB3}
+.btn.pequeno{width:auto;font-size:17px;padding:9px 18px;margin-top:10px;box-shadow:0 4px 0 #26702C}
+.btn.pequeno.azul{box-shadow:0 4px 0 #2E7FB3}.btn.pequeno.claro{box-shadow:0 4px 0 var(--ink)}
+.link{background:none;color:var(--verde);font-weight:800;text-decoration:underline;padding:8px 0}
+.aviso{border-radius:14px;padding:12px 14px;font-weight:700;margin-top:14px;display:none}
+.aviso.erro{display:block;background:#FFE9E3;color:#A2331A}
+.aviso.ok{display:block;background:#E6F5E7;color:#215E26}
+.heroi{text-align:center;padding:10px 0 20px}
+.heroi img{width:120px}
+.heroi h1{font-size:34px;margin-top:6px}
+.heroi p{color:var(--suave);font-weight:700;margin:8px 0 0}
+.selo{display:inline-block;padding:4px 12px;border-radius:40px;font-weight:900;font-size:13px;color:#fff;background:var(--grama)}
+.selo.sol{background:var(--sol);color:var(--ink)}.selo.cinza{background:#C9C4D6}
+.mes{margin:26px 0 10px;display:flex;align-items:center;gap:10px}
+.mes h2{font-size:28px}
+.grupo{font-family:'Baloo 2';font-weight:800;font-size:19px;color:var(--suave);margin:18px 0 8px}
+.aula{background:#fff;border:2px solid var(--linha);border-radius:20px;padding:16px 18px;margin-bottom:12px;box-shadow:0 5px 0 rgba(45,42,74,.07)}
+.aula h3{font-size:23px}
+.aula .tema{color:var(--suave);font-weight:700;margin:2px 0 4px}
+.aula .acoes{display:flex;flex-wrap:wrap;gap:8px}
+.aula.trancada{background:#F5F2E8;border-style:dashed}
+.faixas{display:grid;gap:10px;margin-top:14px}
+.faixas button{background:#fff;border:2px solid var(--ink);border-radius:18px;padding:14px;font-family:'Baloo 2';font-weight:800;font-size:22px;color:var(--ink);box-shadow:0 5px 0 var(--ink)}
+.rodape{text-align:center;color:var(--suave);font-size:14px;font-weight:700;padding:30px 0 40px}
+.conta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:6px}
+video{width:100%;max-width:360px;border-radius:18px;display:block;margin:12px auto 0;background:#000}
+[hidden]{display:none!important}
+</style><script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1667602411436159');fbq('track','PageView');if(/[?&]bemvinda/.test(location.search))fbq('track','Subscribe');</script>
+</head><body>
+<div class="wrap">
+  <header class="topo"><img src="logo.png" alt=""><div><b>Clube da Sementinha</b><small>Área do assinante</small></div><button class="link sair" id="sair" hidden>Sair</button></header>
+
+  <!-- entrar -->
+  <section id="tela-entrar" hidden>
+    <div class="heroi"><h1>Que bom te ver aqui!</h1><p>Entre para baixar as aulas do mês.</p></div>
+    <form class="cartao" id="f-entrar">
+      <label for="e-email">E-mail da compra</label><input id="e-email" type="email" autocomplete="email" required>
+      <label for="e-senha">Senha</label><input id="e-senha" type="password" autocomplete="current-password" required>
+      <div class="aviso" id="e-aviso"></div>
+      <button class="btn" type="submit">Entrar</button>
+      <p style="text-align:center;margin:14px 0 0"><button type="button" class="link" data-ir="senha">É meu primeiro acesso / esqueci a senha</button></p>
+      <p style="text-align:center;margin:6px 0 0;font-weight:700;color:var(--suave)">Ainda não assina? <a class="link" href="../#planos">Conheça os planos</a></p>
+    </form>
+  </section>
+
+  <!-- criar senha -->
+  <section id="tela-senha" hidden>
+    <div class="heroi"><h1 id="s-titulo">Crie a sua senha</h1><p id="s-sub">Use o e-mail e o telefone que você informou na compra.</p></div>
+    <form class="cartao" id="f-senha">
+      <label for="s-email">E-mail da compra</label><input id="s-email" type="email" autocomplete="email" required>
+      <label for="s-tel">Telefone (WhatsApp) da compra</label><input id="s-tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="(21) 99999-9999" required>
+      <label for="s-senha">Escolha uma senha (6 caracteres ou mais)</label><input id="s-senha" type="password" autocomplete="new-password" minlength="6" required>
+      <div class="aviso" id="s-aviso"></div>
+      <button class="btn" type="submit">Salvar e entrar</button>
+      <p style="text-align:center;margin:14px 0 0"><button type="button" class="link" data-ir="entrar">Já tenho senha</button></p>
+    </form>
+  </section>
+
+  <!-- escolher idade (plano de uma idade) -->
+  <section id="tela-faixa" hidden>
+    <div class="heroi"><h1>Qual é a idade da sua turma?</h1><p>Seu plano inclui as aulas de uma faixa de idade. Escolha com calma: a troca depois é só falando com a gente.</p></div>
+    <div class="cartao"><div class="faixas">
+      <button data-faixa="3-5">🖍️ 3 a 5 anos</button><button data-faixa="6-8">✂️ 6 a 8 anos</button><button data-faixa="9-12">🔎 9 a 12 anos</button>
+    </div><div class="aviso" id="f-aviso"></div></div>
+  </section>
+
+  <!-- biblioteca -->
+  <section id="tela-biblioteca" hidden>
+    <div class="cartao">
+      <h2 id="b-ola" style="font-size:26px">Olá!</h2>
+      <div class="conta"><span class="selo" id="b-plano"></span><span id="b-status" style="font-weight:700;color:var(--suave)"></span></div>
+      <a class="link" id="b-gerenciar" target="_blank" rel="noopener" hidden>Gerenciar assinatura</a>
+    </div>
+    <div id="b-lista"></div>
+    <div class="aviso" id="b-aviso"></div>
+  </section>
+
+  <div class="rodape">Clube da Sementinha · material para uso na sua igreja<br>Não compartilhe os arquivos fora da sua igreja. 💛</div>
+</div>
+<script>
+// ---------- configuração ----------
+const API = 'https://hcadyqktfowfkxsbogmj.supabase.co/functions/v1/sementinha';
+const GERENCIAR = '';            // link do Portal do Cliente do Stripe (trocar cartão, cancelar)
+const PAGINA_PLANOS = '../#planos';        // página de vendas, para quem ainda não assina ou quer subir de plano
+// -----------------------------------
+const $ = s => document.querySelector(s);
+const guarda = { get: k => { try { return localStorage.getItem(k) } catch { return null } }, set: (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v) } catch {} } };
+let token = guarda.get('sementinha_token');
+const PLANOS = { uma: 'Plano Uma idade', todas: 'Plano Todas as idades', completo: 'Plano Completo' };
+const MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+
+async function api(corpo) {
+  const r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: 'Bearer ' + token } : {}) }, body: JSON.stringify(corpo) });
+  const d = await r.json().catch(() => ({ erro: 'Sem conexão. Tente de novo.' }));
+  if (!r.ok) throw Object.assign(new Error(d.erro || 'Algo deu errado.'), { status: r.status });
+  return d;
+}
+function tela(nome) {
+  ['entrar', 'senha', 'faixa', 'biblioteca'].forEach(t => $('#tela-' + t).hidden = t !== nome);
+  $('#sair').hidden = !token;
+  window.scrollTo(0, 0);
+}
+function aviso(id, msg, tipo = 'erro') { const el = $(id); el.className = 'aviso ' + (msg ? tipo : ''); el.textContent = msg || ''; }
+async function ocupado(botao, fn) { const t = botao.textContent; botao.disabled = true; botao.textContent = 'Aguarde…'; try { await fn() } finally { botao.disabled = false; botao.textContent = t } }
+function entrou(d) { token = d.token; guarda.set('sementinha_token', token); abrir(); }
+
+document.querySelectorAll('[data-ir]').forEach(b => b.onclick = () => { $('#s-email').value = $('#e-email').value; tela(b.dataset.ir); });
+$('#f-entrar').onsubmit = e => { e.preventDefault(); aviso('#e-aviso'); ocupado(e.submitter, async () => {
+  try {
+    const d = await api({ acao: 'login', email: $('#e-email').value, senha: $('#e-senha').value });
+    if (d.primeiro_acesso) { $('#s-email').value = $('#e-email').value; aviso('#s-aviso', 'É o seu primeiro acesso: crie a sua senha.', 'ok'); return tela('senha'); }
+    entrou(d);
+  } catch (err) { aviso('#e-aviso', err.message); } }); };
+$('#f-senha').onsubmit = e => { e.preventDefault(); aviso('#s-aviso'); ocupado(e.submitter, async () => {
+  try { entrou(await api({ acao: 'definir_senha', email: $('#s-email').value, telefone: $('#s-tel').value, senha: $('#s-senha').value })); }
+  catch (err) { aviso('#s-aviso', err.message); } }); };
+$('#sair').onclick = async () => { try { await api({ acao: 'sair' }) } catch {} token = null; guarda.set('sementinha_token', null); tela('entrar'); };
+document.querySelectorAll('[data-faixa]').forEach(b => b.onclick = () => ocupado(b, async () => {
+  if (!confirm('Confirmar ' + b.textContent.trim() + ' como a idade do seu plano?')) return;
+  try { await api({ acao: 'escolher_faixa', faixa: b.dataset.faixa }); abrir(); } catch (err) { aviso('#f-aviso', err.message); } }));
+
+async function baixar(botao, id, assistir) {
+  aviso('#b-aviso');
+  await ocupado(botao, async () => {
+    try {
+      const d = await api({ acao: 'baixar', id, assistir });
+      if (assistir) { let v = botao.closest('.aula').querySelector('video'); if (!v) { v = document.createElement('video'); v.controls = true; v.playsInline = true; botao.closest('.aula').appendChild(v); } v.src = d.url; v.play().catch(() => {}); }
+      else { const a = document.createElement('a'); a.href = d.url; a.download = ''; document.body.appendChild(a); a.click(); a.remove(); }
+    } catch (err) { if (err.status === 401) return abrir(); aviso('#b-aviso', err.message); $('#b-aviso').scrollIntoView({ block: 'center' }); }
+  });
+}
+
+function desenhar(d) {
+  const a = d.assinante;
+  $('#b-ola').textContent = 'Olá' + (a.nome ? ', ' + a.nome.split(' ')[0] : '') + '! 🌱';
+  $('#b-plano').textContent = PLANOS[a.plano] + (a.plano === 'uma' && a.faixa ? ' · ' + a.faixa.replace('-', ' a ') + ' anos' : '');
+  $('#b-status').textContent = a.ativo ? (a.valido_ate ? 'Acesso até ' + new Date(a.valido_ate).toLocaleDateString('pt-BR') : 'Assinatura ativa') : 'Assinatura inativa';
+  if (GERENCIAR && a.periodo === 'mensal') { $('#b-gerenciar').hidden = false; $('#b-gerenciar').href = GERENCIAR + '?prefilled_email=' + encodeURIComponent(a.email); }
+  const lista = $('#b-lista'); lista.innerHTML = '';
+  if (!a.ativo) { lista.innerHTML = '<div class="aula trancada"><h3>Sua assinatura não está ativa</h3><p class="tema">Regularize o pagamento para voltar a baixar as aulas.</p></div>'; return; }
+  const meses = {};
+  d.aulas.forEach(x => (meses[x.mes] ??= []).push(x));
+  Object.keys(meses).sort().reverse().forEach(m => {
+    const [ano, mm] = m.split('-'), itens = meses[m], aberto = itens.some(x => x.liberado);
+    const sec = document.createElement('div');
+    sec.innerHTML = `<div class="mes"><h2>${MESES[mm - 1][0].toUpperCase() + MESES[mm - 1].slice(1)} de ${ano}</h2>${aberto ? '' : '<span class="selo cinza">em breve</span>'}</div>`;
+    [['domingo', 'Aulas de domingo'], ['semana', 'Aulas do meio da semana']].forEach(([tipo, titulo]) => {
+      const doTipo = itens.filter(x => x.tipo === tipo); if (!doTipo.length) return;
+      sec.insertAdjacentHTML('beforeend', `<div class="grupo">${titulo}</div>`);
+      doTipo.forEach(x => {
+        const el = document.createElement('div'); el.className = 'aula' + (x.liberado && x.incluso ? '' : ' trancada');
+        if (!x.liberado) el.innerHTML = `<h3>🔒 Aula ${x.aula}</h3><p class="tema">Libera em ${new Date(x.libera_em + 'T12:00').toLocaleDateString('pt-BR')}</p>`;
+        else {
+          el.innerHTML = `<h3>${x.titulo}</h3><p class="tema">${x.tema || ''}${x.referencia ? ' · ' + x.referencia : ''}</p>`;
+          if (!x.incluso) el.insertAdjacentHTML('beforeend', `<p style="margin:6px 0 0;font-weight:700">🔒 As aulas do meio da semana fazem parte do Plano Completo.</p>${PAGINA_PLANOS ? `<a class="btn pequeno claro" href="${PAGINA_PLANOS}">Conhecer o Plano Completo</a>` : ''}`);
+          else { const ac = document.createElement('div'); ac.className = 'acoes';
+            x.itens.forEach(i => { const b = document.createElement('button'); b.className = 'btn pequeno' + (i.formato === 'video' ? ' azul' : ''); b.textContent = (i.formato === 'video' ? '▶ ' : '⬇ ') + i.rotulo; b.onclick = () => baixar(b, i.id, i.formato === 'video'); ac.appendChild(b);
+              if (i.formato === 'video') { const b2 = document.createElement('button'); b2.className = 'btn pequeno claro'; b2.textContent = '⬇ Baixar o vídeo'; b2.onclick = () => baixar(b2, i.id, false); ac.appendChild(b2); } });
+            el.appendChild(ac); }
+        }
+        sec.appendChild(el);
+      });
+    });
+    lista.appendChild(sec);
+  });
+}
+
+async function abrir() {
+  if (!token) return tela(new URLSearchParams(location.search).has('bemvinda') ? 'senha' : 'entrar');
+  try {
+    const d = await api({ acao: 'biblioteca' });
+    if (d.assinante.plano === 'uma' && !d.assinante.faixa && d.assinante.ativo) return tela('faixa');
+    desenhar(d); tela('biblioteca');
+  } catch (err) { if (err.status === 401) { token = null; guarda.set('sementinha_token', null); return tela('entrar'); } tela('biblioteca'); aviso('#b-aviso', err.message); }
+}
+if (new URLSearchParams(location.search).has('bemvinda')) { $('#s-titulo').textContent = 'Pagamento confirmado! 🎉'; $('#s-sub').textContent = 'Agora crie a sua senha para entrar. Use o e-mail e o telefone que você informou na compra.'; }
+abrir();
+</script></body></html>
