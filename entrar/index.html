@@ -377,8 +377,8 @@ function pintarMetricas(m) {
   const tA = (m.teste || [])[0], tB = (m.teste || [])[1];
   if (tA && tB) {
     const cel = (x, k, base = 'visita') => `<td>${x[k]}<br><small style="color:var(--suave)">${pct(x[k], x[base])}</small></td>`;
-    const lt = (rot, x) => `<tr><td><b>${rot}</b></td><td>${x.visita}</td>${cel(x, 'rolou_meio')}${cel(x, 'viu_planos')}${cel(x, 'clique_topo')}${cel(x, 'clique_plano')}</tr>`;
-    $('#m-teste').innerHTML = '<tr><th>Versão</th><th>Abriram</th><th>Leram até a metade</th><th>Chegaram nos planos</th><th>Clicaram no botão do topo</th><th>Clicaram em um plano</th></tr>'
+    const lt = (rot, x) => `<tr><td><b>${rot}</b></td><td>${x.visita}</td>${cel(x, 'rolou_meio')}${cel(x, 'viu_planos')}${cel(x, 'clique_topo')}${cel(x, 'clique_plano')}<td><b>${x.assinou || 0}</b><br><small style="color:var(--suave)">${pct(x.assinou || 0, x.visita)}</small></td></tr>`;
+    $('#m-teste').innerHTML = '<tr><th>Versão</th><th>Abriram</th><th>Leram até a metade</th><th>Chegaram nos planos</th><th>Clicaram no botão do topo</th><th>Clicaram em um plano</th><th>Assinaram</th></tr>'
       + lt('A · imagem', tA) + lt('B · vídeo', tB);
     const melhor = (k) => { const a = tA.visita ? tA[k] / tA.visita : 0, b = tB.visita ? tB[k] / tB.visita : 0; return a === b ? 'empate' : a > b ? 'A' : 'B'; };
     const pouco = Math.min(tA.visita, tB.visita) < 100;
@@ -429,6 +429,9 @@ async function abrir() {
     desenhar(d); tela('biblioteca');
   } catch (err) { if (err.status === 401) { token = null; guarda.set('sementinha_token', null); return tela('entrar'); } tela('biblioteca'); aviso('#b-aviso', err.message); }
 }
+// quem acabou de pagar volta para cá: marca a assinatura na versão da página que a pessoa viu (teste A/B)
+if (new URLSearchParams(location.search).has('bemvinda')) { try { const vid = localStorage.getItem('sem_vid'), ab = localStorage.getItem('sem_ab');
+  if (vid && !localStorage.getItem('sem_assinou')) { localStorage.setItem('sem_assinou', '1'); fetch(API, { method: 'POST', keepalive: true, headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ acao: 'evento', tipo: 'assinou', visitante: vid, variante: ab }) }).catch(() => {}); } } catch (e) {} }
 if (new URLSearchParams(location.search).has('bemvinda')) { $('#s-titulo').textContent = 'Pagamento confirmado! 🎉'; $('#s-sub').textContent = 'Agora crie a sua senha para entrar. Use o e-mail e o telefone que você informou na compra.'; }
 abrir();
 </script></body></html>
