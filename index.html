@@ -410,7 +410,7 @@ document.querySelectorAll('[data-link]').forEach(a => a.addEventListener('click'
 document.querySelectorAll('[data-topo]').forEach(a => a.addEventListener('click', () => semEvento('clique_topo')));
 // versão B: vídeo explicativo no topo. Começa sozinho e sem som (com legenda); um toque liga o som e volta ao início.
 if (window.SEM_AB === 'B') { const q = document.getElementById('quadro-video'), bt = document.getElementById('som');
-  const v = document.createElement('video'); v.muted = true; v.playsInline = true; v.autoplay = true; v.preload = 'auto'; v.poster = 'img/explicativo-capa.jpg'; v.src = 'img/explicativo.mp4';
+  const v = document.createElement('video'); v.muted = true; v.playsInline = true; v.autoplay = true; v.preload = 'auto'; v.poster = 'img/explicativo-capa.jpg'; v.src = 'img/explicativo.mp4?v=2';
   v.setAttribute('playsinline', ''); v.setAttribute('muted', '');
   v.addEventListener('playing', () => { if (v.muted) bt.hidden = false; semEvento('video_inicio'); }, { once: false });
   v.addEventListener('timeupdate', () => { const f = v.currentTime / (v.duration || 1); if (f > .25) semEvento('video_25'); if (f > .5) semEvento('video_50'); if (f > .75) semEvento('video_75'); });
