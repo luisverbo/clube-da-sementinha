@@ -175,6 +175,9 @@ textarea{width:100%;font:inherit;padding:12px 14px;border:2px solid var(--linha)
       <div class="cab"><h3>👀 Visitas e cliques da página de vendas</h3><div class="filtros" id="m-per" style="margin:0"></div></div>
       <div class="funil" id="m-funil"></div>
       <p class="dica" id="m-dica"></p>
+      <h3 style="font-size:19px;margin-top:22px">🧪 Teste do topo da página: imagem × vídeo</h3>
+      <div class="rolar"><table class="tab" id="m-teste"></table></div>
+      <p class="dica" id="m-teste-dica"></p>
       <div class="rolar"><table class="tab" id="m-dias"></table></div>
       <div class="rolar"><table class="tab" id="m-origem"></table></div>
       <div class="rolar"><table class="tab" id="m-anuncio"></table></div>
@@ -371,6 +374,17 @@ function pintarMetricas(m) {
     + cx('Clicaram em um plano', t.clique_plano, `<em>${pct(t.clique_plano, t.viu_planos)} de quem viu os planos</em>`)
     + cx('Assinaram', t.assinaturas, `${R$(t.vendido)} · <em style="display:inline">${pct(t.assinaturas, t.clique_plano)} de quem clicou</em>`, t.assinaturas ? '' : '');
   $('#m-dica').textContent = `${t.historinha} pessoa(s) tocaram a historinha de amostra e ${t.rolou_fim} leram a página até o fim. Contamos cada pessoa uma vez por etapa, mesmo que ela volte várias vezes.`;
+  const tA = (m.teste || [])[0], tB = (m.teste || [])[1];
+  if (tA && tB) {
+    const cel = (x, k, base = 'visita') => `<td>${x[k]}<br><small style="color:var(--suave)">${pct(x[k], x[base])}</small></td>`;
+    const lt = (rot, x) => `<tr><td><b>${rot}</b></td><td>${x.visita}</td>${cel(x, 'rolou_meio')}${cel(x, 'viu_planos')}${cel(x, 'clique_topo')}${cel(x, 'clique_plano')}</tr>`;
+    $('#m-teste').innerHTML = '<tr><th>Versão</th><th>Abriram</th><th>Leram até a metade</th><th>Chegaram nos planos</th><th>Clicaram no botão do topo</th><th>Clicaram em um plano</th></tr>'
+      + lt('A · imagem', tA) + lt('B · vídeo', tB);
+    const melhor = (k) => { const a = tA.visita ? tA[k] / tA.visita : 0, b = tB.visita ? tB[k] / tB.visita : 0; return a === b ? 'empate' : a > b ? 'A' : 'B'; };
+    const pouco = Math.min(tA.visita, tB.visita) < 100;
+    $('#m-teste-dica').innerHTML = `No vídeo (versão B): ${tB.video_inicio} começaram a ver · ${tB.video_25} passaram de 1/4 · ${tB.video_50} da metade · ${tB.video_75} de 3/4 · ${tB.video_fim} viram até o fim · ${tB.video_som} ligaram o som.<br>`
+      + `Por enquanto, quem leva mais gente até os planos: <b>${melhor('viu_planos')}</b>.` + (pouco ? ' Ainda é cedo: espere pelo menos 100 pessoas em cada versão antes de decidir.' : '');
+  }
   const linha = (nome, x, extra = '') => `<tr><td>${nome}</td><td>${x.visita}</td><td>${x.rolou_meio}</td><td>${x.viu_planos}</td><td>${x.clique_plano}</td>${extra}</tr>`;
   const cab = (primeira, extra = '') => `<tr><th>${primeira}</th><th>Abriram</th><th>Metade</th><th>Planos</th><th>Clicaram</th>${extra}</tr>`;
   const fmtDia = d => { const [a, mm, dd] = d.split('-'); return `${dd}/${mm}`; };
