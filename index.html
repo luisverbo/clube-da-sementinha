@@ -6,9 +6,9 @@
 try{v=localStorage.getItem('sem_ab')}catch(e){}
 if(t==='A'||t==='B'){v=t;window.SEM_TESTE=1}else if(v!=='A'&&v!=='B'){v=Math.random()<.5?'A':'B';try{localStorage.setItem('sem_ab',v)}catch(e){}}
 window.SEM_AB=v;document.documentElement.setAttribute('data-ab',v)})()</script>
-<title>Clube da Sementinha · Aulas bíblicas prontas para o ministério infantil</title>
+<title>Clube da Sementinha · Aulas bíblicas prontas para as crianças da igreja</title>
 <meta name="description" content="Todo mês, aulas bíblicas prontas para as crianças da sua igreja: roteiro, história, atividades para 3 a 12 anos e historinha em vídeo. É só imprimir.">
-<meta property="og:title" content="Clube da Sementinha · Sua aula de domingo pronta, todo mês">
+<meta property="og:title" content="Clube da Sementinha · A aula bíblica das crianças da sua igreja, pronta todo mês">
 <meta property="og:description" content="Roteiro, história, atividades para 3 a 12 anos e historinha em vídeo. É só imprimir e dar a aula.">
 <meta property="og:image" content="https://clubedasementinha.com/img/topo-aula-pronta.jpg">
 <link rel="icon" href="img/logo.png">
@@ -45,7 +45,7 @@ section{position:relative;padding:72px 0}
 .heroi{padding:26px 0 0;background:linear-gradient(#BFE6FB,#E8F6FE 55%,var(--paper));overflow:hidden}
 .heroi .grade{display:grid;grid-template-columns:1.05fr .95fr;grid-template-areas:"texto visual" "oferta visual";gap:0 44px;align-items:center}
 .heroi .texto{grid-area:texto;align-self:end}.heroi .visual{grid-area:visual}.heroi .oferta{grid-area:oferta;align-self:start}
-.heroi h1{font-size:clamp(34px,6.2vw,74px);margin-top:14px}
+.heroi h1{font-size:clamp(34px,5vw,62px);margin-top:14px}
 .heroi h1 .risco{white-space:nowrap;background:linear-gradient(transparent 66%,var(--sol2) 66% 94%,transparent 94%);border-radius:6px;padding:0 .06em}
 .heroi .sub{margin-left:0;max-width:520px}
 .heroi .oferta{margin-top:30px}
@@ -165,7 +165,7 @@ footer a{color:#fff}
  section{padding:54px 0}
  .dor .grade,.historinha .grade{grid-template-columns:1fr}
  .heroi{text-align:center;padding-top:14px}.heroi .grade{grid-template-columns:1fr;grid-template-areas:"texto" "visual" "oferta"}
- .heroi .sub{display:none}.heroi h1{margin-top:10px;font-size:clamp(31px,8.6vw,46px)}.heroi .selo{font-size:11.5px;padding:6px 13px;letter-spacing:.3px}
+ .heroi .sub{display:none}.heroi h1{margin-top:10px;font-size:clamp(26px,7.3vw,42px)}.heroi .selo{font-size:11.5px;padding:6px 13px;letter-spacing:.3px}
  .heroi .visual{margin-top:14px;padding:0 6px}.quadro{max-width:440px;border-radius:26px;box-shadow:0 7px 0 var(--ink)}.quadro>img,.quadro>video{border-radius:21px}
  .heroi .oferta{margin-top:34px}.chips li{font-size:12.5px;padding:3px 10px}.chips{gap:6px}.heroi .oferta .btn{width:100%;font-size:22px;padding:15px 16px}.chips{justify-content:center}.precinho{font-size:16px}
  .nav .wrap{padding-top:7px;padding-bottom:7px}.nav img{width:36px;height:36px}.nav b{font-size:19px}.nav .btn{font-size:15px;padding:6px 16px}
@@ -191,17 +191,17 @@ footer a{color:#fff}
 <header class="heroi"><div class="wrap grade">
  <div class="texto">
   <span class="selo">Para a tia do ministério infantil e da EBD</span>
-  <h1>Sua aula de domingo <span class="risco"><em>pronta</em></span>. Todo mês.</h1>
-  <p class="sub">Roteiro, história para contar, atividades para cada idade e historinha em vídeo. Você só imprime e vive o melhor da aula: as crianças.</p>
+  <h1>A aula bíblica das crianças da sua igreja, <span class="risco"><em>pronta</em></span> todo mês.</h1>
+  <p class="sub">Roteiro, história da Bíblia para contar, atividades para cada idade e historinha em vídeo. Você só imprime e vive o melhor da aula: as crianças.</p>
  </div>
  <div class="visual">
-  <div class="quadro so-a"><img src="img/topo-aula-pronta.jpg" alt="Professora feliz com as atividades da aula já impressas" fetchpriority="high"><span class="adesivo">✓ Aula pronta!</span>
+  <div class="quadro so-a"><img src="img/topo-aula-pronta.jpg" alt="Professora feliz com as atividades da aula já impressas" fetchpriority="high"><span class="adesivo">✓ Aula da igreja pronta!</span>
    <img class="mini-folha um" src="img/pagina-3.jpg" alt=""><img class="mini-folha dois" src="img/pagina-1.jpg" alt=""></div>
   <div class="quadro so-b" id="quadro-video"><img src="img/explicativo-capa.jpg" alt="Vídeo: como funciona o Clube da Sementinha"><button class="som" id="som" hidden>🔊 Toque para ouvir</button></div>
  </div>
  <div class="oferta">
   <a class="btn" href="#planos" data-topo>Quero as aulas prontas <span class="seta">→</span></a>
-  <p class="precinho">A partir de <b>R$ 19,90 por mês</b><br>menos de R$ 5 por aula, para a turma toda</p>
+  <p class="precinho">A partir de <b>R$ 19,90 por mês</b><br>menos de R$ 5 por aula, para a igreja toda</p>
   <ul class="chips"><li><b>✓</b> Sem fidelidade</li><li><b>✓</b> Cancele quando quiser</li><li><b>✓</b> 7 dias de garantia</li></ul>
  </div>
 </div>
@@ -410,14 +410,14 @@ document.querySelectorAll('[data-link]').forEach(a => a.addEventListener('click'
 document.querySelectorAll('[data-topo]').forEach(a => a.addEventListener('click', () => semEvento('clique_topo')));
 // versão B: vídeo explicativo no topo. Começa sozinho e sem som (com legenda); um toque liga o som e volta ao início.
 if (window.SEM_AB === 'B') { const q = document.getElementById('quadro-video'), bt = document.getElementById('som');
-  const v = document.createElement('video'); v.muted = true; v.playsInline = true; v.autoplay = true; v.preload = 'auto'; v.poster = 'img/explicativo-capa.jpg'; v.src = 'img/explicativo.mp4?v=2';
+  const v = document.createElement('video'); v.muted = true; v.playsInline = true; v.autoplay = true; v.preload = 'auto'; v.poster = 'img/explicativo-capa.jpg'; v.src = 'img/explicativo.mp4?v=3';
   v.setAttribute('playsinline', ''); v.setAttribute('muted', '');
   v.addEventListener('playing', () => { if (v.muted) bt.hidden = false; semEvento('video_inicio'); }, { once: false });
   v.addEventListener('timeupdate', () => { const f = v.currentTime / (v.duration || 1); if (f > .25) semEvento('video_25'); if (f > .5) semEvento('video_50'); if (f > .75) semEvento('video_75'); });
   v.addEventListener('ended', () => { semEvento('video_fim'); bt.textContent = '↻ Ver de novo'; bt.hidden = false; bt.dataset.fim = 1; });
   const ligar = () => { if (bt.dataset.fim) { delete bt.dataset.fim; } else if (!v.muted) { v.paused ? v.play() : v.pause(); return; } v.muted = false; v.currentTime = 0; v.play(); bt.hidden = true; semEvento('video_som'); };
   bt.onclick = e => { e.stopPropagation(); ligar(); }; q.addEventListener('click', ligar); q.style.cursor = 'pointer';
-  q.querySelector('img').remove(); q.insertBefore(v, q.firstChild); v.play().catch(() => { bt.textContent = '▶ Assistir (40 s)'; bt.hidden = false; }); }
+  q.querySelector('img').remove(); q.insertBefore(v, q.firstChild); v.play().catch(() => { bt.textContent = '▶ Assistir (45 s)'; bt.hidden = false; }); }
 // tocar a historinha só quando a pessoa pedir (o vídeo é pesado)
 document.getElementById('tocar').onclick = function () { if (this.querySelector('video')) return; this.innerHTML = '<video src="img/historinha-davi.mp4" controls autoplay playsinline></video>'; try { fbq('trackCustom', 'AssistiuHistorinha') } catch (e) {} semEvento('historinha'); };
 </script>
