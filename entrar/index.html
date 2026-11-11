@@ -181,6 +181,16 @@ textarea{width:100%;font:inherit;padding:12px 14px;border:2px solid var(--linha)
       <div class="rolar"><table class="tab" id="m-planos"></table></div>
       <div class="aviso" id="m-aviso"></div>
     </div>
+    <div class="cartao" style="margin-top:26px" id="e-cartao">
+      <h3 style="font-family:'Baloo 2';font-size:22px;margin:0">✉️ Mandar e-mail para os assinantes</h3>
+      <p class="dica" id="e-status" style="margin:4px 0 0"></p>
+      <label for="e-assunto">Assunto</label><input id="e-assunto" maxlength="150">
+      <label for="e-texto">Mensagem (deixe uma linha em branco para separar os parágrafos)</label><textarea id="e-texto" maxlength="4000" style="min-height:150px"></textarea>
+      <p class="dica">O e-mail começa com "Olá, (nome)!" e termina com o botão para abrir a área do assinante. Vai só para quem está com a assinatura ativa.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn pequeno claro" id="e-teste" style="margin:12px 0 0">Mandar um teste para mim</button><button class="btn pequeno" id="e-enviar" style="margin:12px 0 0">Enviar para os assinantes</button></div>
+      <div class="aviso" id="e-aviso2"></div>
+      <div class="rolar"><table class="tab" id="e-ultimos" hidden></table></div>
+    </div>
     <h3 style="font-family:'Baloo 2';font-size:22px;margin:30px 0 0">👥 Assinantes</h3>
     <div class="numeros" id="p-numeros"></div>
     <p style="font-size:13.5px;color:var(--suave);font-weight:700;margin:10px 2px 0" id="p-nota"></p>
@@ -303,6 +313,7 @@ const dia = d => d ? new Date(d).toLocaleDateString('pt-BR') : '';
 let painel = null, filtro = 'todos', busca = '';
 const NOMES_PLANO = { uma: 'Uma idade', todas: 'Todas as idades', completo: 'Completo' };
 function pintarPainel() {
+  pintarEmail();
   const r = painel.resumo, n = $('#p-numeros');
   const cx = (t, v, sub, cls = '') => `<div class="num ${cls}"><small>${t}</small><b>${v}</b><i>${sub}</i></div>`;
   n.innerHTML = cx('Assinantes ativos', r.ativos, `${r.ativos_mensal} mensais · ${r.ativos_anual} anuais`, 'dest')
@@ -375,6 +386,23 @@ function pintarMetricas(m) {
     return `<tr><td>${NOMES[pl] || pl} · ${per || ''}<div class="barra" style="width:${Math.max(6, v / maior * 100)}%"></div></td><td>${v}</td></tr>`; }).join('');
 }
 async function carregarMetricas() { aviso('#m-aviso'); try { pintarMetricas(await api({ acao: 'admin_metricas', dias: mDias })); } catch (err) { aviso('#m-aviso', err.message); } }
+// ---- e-mail para os assinantes ----
+const MES_NOME = MESES[new Date().getMonth()];
+if (!$('#e-assunto').value) { $('#e-assunto').value = `As aulas de ${MES_NOME} já estão prontas 🌱`;
+  $('#e-texto').value = `O material de ${MES_NOME} do Clube da Sementinha já está liberado na sua área do assinante.\n\nÉ só entrar, baixar a aula da sua turma e imprimir. A historinha em vídeo e o recado para a família também estão lá.\n\nBoa aula e que Deus abençoe o seu ministério!`; }
+function pintarEmail() {
+  const ativos = painel.assinantes.filter(x => x.ativo).length;
+  $('#e-status').textContent = painel.email_ligado ? `Envio ligado. ${ativos} assinante(s) ativos vão receber.` : 'O envio ainda não está ligado: falta colocar a chave do Resend no sistema.';
+  $('#e-enviar').textContent = `Enviar para ${ativos} assinante(s)`;
+  const u = painel.ultimos_emails || [];
+  $('#e-ultimos').hidden = !u.length;
+  const TIPO = { boas_vindas: 'Boas-vindas', aviso: 'Aviso', teste: 'Teste' };
+  $('#e-ultimos').innerHTML = '<tr><th>Últimos e-mails</th><th>Para</th><th>Situação</th></tr>' + u.map(x => `<tr><td>${new Date(x.enviado_em).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })} · ${TIPO[x.tipo] || x.tipo}</td><td>${x.para}</td><td>${x.ok ? '✅ enviado' : '⚠️ ' + (x.erro || 'falhou').slice(0, 60)}</td></tr>`).join('');
+}
+const mandar = teste => async e => { aviso('#e-aviso2'); const b = e.currentTarget;
+  if (!teste && !confirm(`Enviar este e-mail para todos os assinantes ativos agora?`)) return;
+  await ocupado(b, async () => { try { const r = await api({ acao: 'admin_email', teste, assunto: $('#e-assunto').value, texto: $('#e-texto').value }); aviso('#e-aviso2', r.mensagem, 'ok'); painel = await api({ acao: 'admin_painel' }); pintarPainel(); } catch (err) { aviso('#e-aviso2', err.message); } }); };
+$('#e-teste').onclick = mandar(true); $('#e-enviar').onclick = mandar(false);
 async function abrirPainel() { tela('painel'); aviso('#p-aviso'); carregarMetricas(); try { painel = await api({ acao: 'admin_painel' }); pintarPainel(); } catch (err) { aviso('#p-aviso', err.message); } }
 $('#b-painel').onclick = abrirPainel; $('#p-recarregar').onclick = abrirPainel;
 
